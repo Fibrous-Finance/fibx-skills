@@ -1,6 +1,6 @@
 # fibx Agentic Wallet Skills
 
-[Agent Skills](https://agentskills.io) for the `fibx` CLI wallet, modeled after [Coinbase Agentic Wallet Skills](https://github.com/coinbase/agentic-wallet-skills). These skills enable AI agents to authenticate, check balances, send funds, and trade tokens on Base using the [`fibx`](../README.md) CLI.
+[Agent Skills](https://agentskills.io) for the `fibx` CLI wallet. These skills enable AI agents to authenticate, check balances, send funds, and trade tokens on Base using the [`fibx`](https://www.npmjs.com/package/fibx) CLI.
 
 ## Available Skills
 
@@ -41,10 +41,6 @@ Once installed, the agent will detect relevant user intents and invoke the appro
 - "Check my balance" -> Triggers `balance` skill
 - "Send 10 USDC to 0x123..." -> Triggers `send` skill
 - "Swap 0.05 ETH to USDC" -> Triggers `trade` skill
-
-## Support
-
-For issues with the underlying wallet functionality, please refer to the main `fibx` repository.
 
 ## License
 
