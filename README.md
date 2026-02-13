@@ -39,7 +39,7 @@ Once installed, the agent will detect relevant user intents and invoke the appro
 
 - "Log me in with user@example.com" -> Triggers `authenticate-wallet` skill
 - "Check my balance" -> Triggers `balance` skill
-- "Send 10 USDC to 0x123..." -> Triggers `send-usdc` skill
+- "Send 10 USDC to 0x123..." -> Triggers `send` skill
 - "Swap 0.05 ETH to USDC" -> Triggers `trade` skill
 
 ## Support

@@ -41,11 +41,11 @@ npx fibx send <amount> <recipient> [token] [--json]
 ## Examples
 
 ```bash
-# Send 1 ETH (default token is ETH)
-npx fibx send 1 0x1234...abcd
+# Send 0.01 ETH (default token is ETH)
+npx fibx send 0.01 0x1234...abcd
 
-# Send 50 USDC
-npx fibx send 50 0x1234...abcd USDC
+# Send 10 USDC
+npx fibx send 10 0x1234...abcd USDC
 
 # Send $1.00 USDC (assumes 1 USDC = $1)
 npx fibx send '$1.00' 0x1234...abcd USDC

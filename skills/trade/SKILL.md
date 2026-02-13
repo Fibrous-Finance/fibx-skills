@@ -42,8 +42,8 @@ npx fibx trade <amount> <from> <to> [options]
 ## Examples
 
 ```bash
-# Swap 1 ETH for USDC
-npx fibx trade 1 ETH USDC
+# Swap 0.01 ETH for USDC
+npx fibx trade 0.01 ETH USDC
 
 # Swap $10 USDC for ETH (assumes 1 USDC = $1)
 npx fibx trade '$10' USDC ETH
