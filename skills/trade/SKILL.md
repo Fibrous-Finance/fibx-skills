@@ -4,8 +4,8 @@ description: Swap/Trade tokens using Fibrous Finance aggregation. Supports Base,
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 1.0.0
-    author: fibx-team
+    version: 0.1.3
+    author: ahmetenesdur
     category: detailed-transaction
 allowed-tools:
     - Bash(npx fibx trade *)

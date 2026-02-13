@@ -4,8 +4,8 @@ description: Check wallet balances (ETH, USDC, etc.) on supported chains (Base, 
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 1.0.0
-    author: fibx-team
+    version: 0.1.3
+    author: ahmetenesdur
     category: wallet-data
 allowed-tools:
     - Bash(npx fibx balance *)

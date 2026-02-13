@@ -4,8 +4,8 @@ description: Check the status of a transaction hash, get receipt details, and vi
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 1.0.0
-    author: fibx-team
+    version: 0.1.3
+    author: ahmetenesdur
     category: utility
 allowed-tools:
     - Bash(npx fibx tx-status *)
