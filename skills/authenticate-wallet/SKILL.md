@@ -11,6 +11,12 @@ allowed-tools:
 
 When the wallet is not signed in (detected via `fibx status` or when wallet operations fail with authentication errors), use the `fibx` CLI to authenticate.
 
+**Prerequisites**:
+The following environment variables must be set in the runtime environment:
+
+- `PRIVY_APP_ID`
+- `PRIVY_APP_SECRET`
+
 Authentication uses a two-step email OTP process:
 
 ## Authentication Flow

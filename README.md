@@ -22,6 +22,15 @@ These skills are designed to be used with an agentic framework that can execute 
 2.  **Add Skills**:
     Import the skills from the `./skills` directory into your agent's skill registry.
 
+## Configuration
+
+The skills require the following environment variables to be set in the agent's runtime environment:
+
+```bash
+export PRIVY_APP_ID="your-app-id"
+export PRIVY_APP_SECRET="your-app-secret"
+```
+
 ## Usage
 
 Once installed, the agent will detect relevant user intents and invoke the appropriate `fibx` commands.
