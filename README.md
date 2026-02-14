@@ -1,4 +1,4 @@
-# fibx Agentic Wallet Skills
+# fibx Skills
 
 [Agent Skills](https://agentskills.io) for the `fibx` CLI wallet. These skills enable AI agents to authenticate, check balances, send funds, and trade tokens on **Base, Citrea, HyperEVM, and Monad** using the [`fibx`](https://www.npmjs.com/package/fibx) CLI.
 
