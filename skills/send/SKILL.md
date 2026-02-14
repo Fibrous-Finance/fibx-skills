@@ -4,14 +4,14 @@ description: Send ETH or ERC-20 tokens (like USDC) to an Ethereum address. Suppo
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 0.1.3
+    version: 0.1.4
     author: ahmetenesdur
     category: detailed-transaction
 allowed-tools:
-    - Bash(npx fibx send *)
-    - Bash(npx fibx status)
-    - Bash(npx fibx balance *)
-    - Bash(npx fibx tx-status *)
+    - Bash(npx fibx@latest send *)
+    - Bash(npx fibx@latest status)
+    - Bash(npx fibx@latest balance *)
+    - Bash(npx fibx@latest tx-status *)
 ---
 
 # Send Transaction
@@ -21,8 +21,8 @@ Use this skill to transfer assets. It handles both native ETH and ERC-20 tokens.
 ## Hard Rules (CRITICAL)
 
 1.  **Pre-Flight Check**: Before ANY send operation, you **MUST** run:
-    - `npx fibx status` (to ensure connectivity)
-    - `npx fibx balance` (to ensure sufficient funds)
+    - `npx fibx@latest status` (to ensure connectivity)
+    - `npx fibx@latest balance` (to ensure sufficient funds)
 2.  **Recipient Confirmation**: If the user provides a recipient address that has **NOT** been mentioned in the current conversation history, you **MUST** ask for explicit confirmation before sending.
     - _Agent_: "I am about to send 10 USDC to 0x123...456. Is this correct?"
 3.  **Chain Specification**:
@@ -35,7 +35,7 @@ Use this skill to transfer assets. It handles both native ETH and ERC-20 tokens.
 ## Usage
 
 ```bash
-npx fibx send <amount> <recipient> [token] [--chain <chain>] [--json]
+npx fibx@latest send <amount> <recipient> [token] [--chain <chain>] [--json]
 ```
 
 ### Arguments
@@ -61,12 +61,12 @@ npx fibx send <amount> <recipient> [token] [--chain <chain>] [--json]
 
 **Agent Actions:**
 
-1.  `npx fibx status` (Check auth)
-2.  `npx fibx balance` (Check funds)
+1.  `npx fibx@latest status` (Check auth)
+2.  `npx fibx@latest balance` (Check funds)
 3.  (If address is new) "Please confirm: Send 10 USDC to 0x123...abc?"
 4.  User confirms.
-5.  `npx fibx send 10 0x123...abc USDC`
-6.  `npx fibx tx-status <hash_from_output>`
+5.  `npx fibx@latest send 10 0x123...abc USDC`
+6.  `npx fibx@latest tx-status <hash_from_output>`
 
 ### Scenario: Sending ETH on Monad
 
@@ -74,10 +74,10 @@ npx fibx send <amount> <recipient> [token] [--chain <chain>] [--json]
 
 **Agent Actions:**
 
-1.  `npx fibx status --chain monad`
-2.  `npx fibx balance --chain monad`
-3.  `npx fibx send 0.05 0xdef...456 ETH --chain monad` (Native token is treated as 'ETH' generic or 'MON')
-4.  `npx fibx tx-status <hash> --chain monad`
+1.  `npx fibx@latest status --chain monad`
+2.  `npx fibx@latest balance --chain monad`
+3.  `npx fibx@latest send 0.05 0xdef...456 ETH --chain monad` (Native token is treated as 'ETH' generic or 'MON')
+4.  `npx fibx@latest tx-status <hash> --chain monad`
 
 ## Error Handling
 

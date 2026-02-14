@@ -4,11 +4,11 @@ description: Check the status of a transaction hash, get receipt details, and vi
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 0.1.3
+    version: 0.1.4
     author: ahmetenesdur
     category: utility
 allowed-tools:
-    - Bash(npx fibx tx-status *)
+    - Bash(npx fibx@latest tx-status *)
 ---
 
 # Transaction Status Verification
@@ -25,7 +25,7 @@ Use this skill to fetch on-chain data for a given transaction hash. This is crit
 ### Check Status
 
 ```bash
-npx fibx tx-status <hash> [--chain <chain>]
+npx fibx@latest tx-status <hash> [--chain <chain>]
 ```
 
 - `<hash>`: The transaction hash (starting with `0x`).
@@ -38,7 +38,7 @@ npx fibx tx-status <hash> [--chain <chain>]
 **Input:** "Check status of 0x123...456"
 
 ```bash
-npx fibx tx-status 0x123...456
+npx fibx@latest tx-status 0x123...456
 ```
 
 ### Scenario 2: Check a Monad transaction
@@ -46,7 +46,7 @@ npx fibx tx-status 0x123...456
 **Input:** "Verify tx 0xabc...def on Monad"
 
 ```bash
-npx fibx tx-status 0xabc...def --chain monad
+npx fibx@latest tx-status 0xabc...def --chain monad
 ```
 
 ## JSON Output (for programmatic parsing)
@@ -54,7 +54,7 @@ npx fibx tx-status 0xabc...def --chain monad
 Use `--json` to get a machine-readable response:
 
 ```bash
-npx fibx tx-status 0x123...456 --json
+npx fibx@latest tx-status 0x123...456 --json
 ```
 
 **Output Schema:**

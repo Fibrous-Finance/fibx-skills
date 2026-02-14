@@ -4,14 +4,14 @@ description: Swap/Trade tokens using Fibrous Finance aggregation. Supports Base,
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 0.1.3
+    version: 0.1.4
     author: ahmetenesdur
     category: detailed-transaction
 allowed-tools:
-    - Bash(npx fibx trade *)
-    - Bash(npx fibx status)
-    - Bash(npx fibx balance *)
-    - Bash(npx fibx tx-status *)
+    - Bash(npx fibx@latest trade *)
+    - Bash(npx fibx@latest status)
+    - Bash(npx fibx@latest balance *)
+    - Bash(npx fibx@latest tx-status *)
 ---
 
 # Trade / Swap Tokens
@@ -21,8 +21,8 @@ Use this skill to exchange one token for another. It uses the Fibrous Finance ag
 ## Hard Rules (CRITICAL)
 
 1.  **Pre-Flight Check**: Before ANY trade, you **MUST** run:
-    - `npx fibx status`
-    - `npx fibx balance` (ensure you have the _source_ token)
+    - `npx fibx@latest status`
+    - `npx fibx@latest balance` (ensure you have the _source_ token)
 2.  **Chain Specification**:
     - If the user mentions a specific chain (e.g., "on Monad", "for my Citrea wallet"), you **MUST** include the `--chain <name>` parameter.
     - If the user **DOES NOT** mention a chain, you **MUST** either:
@@ -36,7 +36,7 @@ Use this skill to exchange one token for another. It uses the Fibrous Finance ag
 ## Usage
 
 ```bash
-npx fibx trade <amount> <from_token> <to_token> [options]
+npx fibx@latest trade <amount> <from_token> <to_token> [options]
 ```
 
 ### Arguments
@@ -64,10 +64,10 @@ npx fibx trade <amount> <from_token> <to_token> [options]
 
 **Agent Actions:**
 
-1.  `npx fibx status`
-2.  `npx fibx balance`
-3.  `npx fibx trade 0.1 ETH USDC`
-4.  `npx fibx tx-status <hash>`
+1.  `npx fibx@latest status`
+2.  `npx fibx@latest balance`
+3.  `npx fibx@latest trade 0.1 ETH USDC`
+4.  `npx fibx@latest tx-status <hash>`
 
 ### Swap with Custom Slippage
 
@@ -78,7 +78,7 @@ npx fibx trade <amount> <from_token> <to_token> [options]
 1.  Checks info.
 2.  **Agent**: "Confirming: You want to swap 1000 DEGEN to ETH with **2%** slippage. Is this correct?"
 3.  User confirms.
-4.  `npx fibx trade 1000 DEGEN ETH --slippage 2`
+4.  `npx fibx@latest trade 1000 DEGEN ETH --slippage 2`
 
 ### Swap on Monad
 
@@ -86,8 +86,8 @@ npx fibx trade <amount> <from_token> <to_token> [options]
 
 **Agent Actions:**
 
-1.  `npx fibx status --chain monad`
-2.  `npx fibx trade 1 MON USDC --chain monad`
+1.  `npx fibx@latest status --chain monad`
+2.  `npx fibx@latest trade 1 MON USDC --chain monad`
 
 ## Error Handling
 

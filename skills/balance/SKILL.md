@@ -4,12 +4,12 @@ description: Check wallet balances (ETH, USDC, etc.) on supported chains (Base, 
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 0.1.3
+    version: 0.1.4
     author: ahmetenesdur
     category: wallet-data
 allowed-tools:
-    - Bash(npx fibx balance *)
-    - Bash(npx fibx status)
+    - Bash(npx fibx@latest balance *)
+    - Bash(npx fibx@latest status)
 ---
 
 # Check Balance
@@ -27,7 +27,7 @@ Use this skill to inspect the wallet's holdings. By default, it checks the Base 
 ## usage
 
 ```bash
-npx fibx balance [--chain <chain>] [--json]
+npx fibx@latest balance [--chain <chain>] [--json]
 ```
 
 ## Options
@@ -42,19 +42,19 @@ npx fibx balance [--chain <chain>] [--json]
 ### Check Base Balance (Default)
 
 ```bash
-npx fibx balance
+npx fibx@latest balance
 ```
 
 ### Check Monad Balance
 
 ```bash
-npx fibx balance --chain monad
+npx fibx@latest balance --chain monad
 ```
 
 ### Get Raw Data
 
 ```bash
-npx fibx balance --json
+npx fibx@latest balance --json
 ```
 
 ## Error Handling
