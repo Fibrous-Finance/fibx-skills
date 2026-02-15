@@ -1,39 +1,50 @@
 ---
 name: tx-status
-description: Check the status of a transaction hash, get receipt details, and view the block explorer link. Use when you have a transaction hash and need to verify if it succeeded or failed, or to provide a proof link to the user.
+description: Check transaction status, receipt details, and explorer link.
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 0.1.4
+    version: 0.2.0
     author: ahmetenesdur
     category: utility
 allowed-tools:
     - Bash(npx fibx@latest tx-status *)
 ---
 
-# Transaction Status Verification
+# Transaction Status
 
-Use this skill to fetch on-chain data for a given transaction hash. This is critical for verifying the outcome of `send` or `trade` operations.
+Fetch on-chain data for a given transaction hash to verify success/failure.
 
 ## Hard Rules (CRITICAL)
 
-1.  **Verification**: After performing a `send` or `trade`, you MUST use this skill if the user asks "did it go through?" or "show me the link".
-2.  **Chain Specificity**: If the transaction was on a specific chain (e.g., Monad), you MUST verify the status on that same chain using the `--chain` flag.
+1.  **Verification**: After performing a `send` or `trade`, use this skill if the user asks "did it go through?" or "show me the link".
+2.  **Chain Specificity**: If the transaction was on a specific chain (e.g., Monad), you **MUST** verify the status on that same chain using the `--chain` flag.
+
+## Input Schema
+
+The agent should extract the following parameters:
+
+| Parameter | Type   | Description                         | Required             |
+| :-------- | :----- | :---------------------------------- | :------------------- |
+| `hash`    | string | Transaction hash (starts with `0x`) | Yes                  |
+| `chain`   | string | Network (`base`, `monad`, etc.)     | No (Default: `base`) |
 
 ## Usage
 
-### Check Status
-
 ```bash
-npx fibx@latest tx-status <hash> [--chain <chain>]
+npx fibx@latest tx-status <hash> [--chain <chain>] [--json]
 ```
 
-- `<hash>`: The transaction hash (starting with `0x`).
-- `--chain <chain>`: Optional. The network the transaction was sent on (`base`, `citrea`, `hyperevm`, `monad`). Defaults to `base`.
+## Options
+
+| Option              | Description                                                      |
+| ------------------- | ---------------------------------------------------------------- |
+| `--chain <network>` | Network: `base`, `citrea`, `hyperevm`, `monad`. Default: `base`. |
+| `--json`            | Output result as JSON.                                           |
 
 ## Examples
 
-### Scenario 1: Check a Base transaction (Default)
+### Check Base Transaction
 
 **Input:** "Check status of 0x123...456"
 
@@ -41,7 +52,7 @@ npx fibx@latest tx-status <hash> [--chain <chain>]
 npx fibx@latest tx-status 0x123...456
 ```
 
-### Scenario 2: Check a Monad transaction
+### Check Monad Transaction
 
 **Input:** "Verify tx 0xabc...def on Monad"
 
@@ -49,26 +60,18 @@ npx fibx@latest tx-status 0x123...456
 npx fibx@latest tx-status 0xabc...def --chain monad
 ```
 
-## JSON Output (for programmatic parsing)
-
-Use `--json` to get a machine-readable response:
-
-```bash
-npx fibx@latest tx-status 0x123...456 --json
-```
-
-**Output Schema:**
+## JSON Output
 
 ```json
 {
-	"status": "success", // "success" or "reverted"
-	"blockNumber": "12345", // Block number where included
-	"gasUsed": "21000", // Gas used
-	"explorerLink": "https://..." // URL to block explorer
+	"status": "success",
+	"blockNumber": "12345",
+	"gasUsed": "21000",
+	"explorerLink": "https://..."
 }
 ```
 
 ## Error Handling
 
-- **Transaction not found**: If the TX is not found, ensure you are querying the correct chain.
-- **Pending**: The CLI may hang or return "pending" if the tx is still in the mempool.
+- **"Transaction not found"**: Ensure querying the correct chain.
+- **"Pending"**: TX might still be in mempool.

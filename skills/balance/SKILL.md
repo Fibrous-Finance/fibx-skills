@@ -1,10 +1,10 @@
 ---
 name: balance
-description: Check wallet balances (ETH, USDC, etc.) on supported chains (Base, Citrea, HyperEVM, Monad).
+description: Check wallet balances (ETH, USDC, etc.) on supported chains.
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 0.1.4
+    version: 0.2.0
     author: ahmetenesdur
     category: wallet-data
 allowed-tools:
@@ -14,7 +14,7 @@ allowed-tools:
 
 # Check Balance
 
-Use this skill to inspect the wallet's holdings. By default, it checks the Base network, but can be directed to others.
+Inspect the wallet's holdings (native ETH/MON and ERC-20 tokens).
 
 ## Hard Rules (CRITICAL)
 
@@ -24,7 +24,15 @@ Use this skill to inspect the wallet's holdings. By default, it checks the Base 
         - Explicitly state the default: "I will check your balance on **Base**. Is that correct?"
         - OR ask for clarification: "Which chain would you like to check? Base, Citrea, HyperEVM, or Monad?"
 
-## usage
+## Input Schema
+
+The agent should extract the following parameters:
+
+| Parameter | Type   | Description                                              | Required             |
+| :-------- | :----- | :------------------------------------------------------- | :------------------- |
+| `chain`   | string | Network to check (`base`, `citrea`, `hyperevm`, `monad`) | No (Default: `base`) |
+
+## Usage
 
 ```bash
 npx fibx@latest balance [--chain <chain>] [--json]
@@ -49,12 +57,6 @@ npx fibx@latest balance
 
 ```bash
 npx fibx@latest balance --chain monad
-```
-
-### Get Raw Data
-
-```bash
-npx fibx@latest balance --json
 ```
 
 ## Error Handling

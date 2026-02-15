@@ -1,12 +1,12 @@
 ---
 name: send
-description: Send ETH or ERC-20 tokens (like USDC) to an Ethereum address. Supports Base, Citrea, HyperEVM, and Monad.
+description: Send ETH or ERC-20 tokens to another address. Supports Base, Citrea, HyperEVM, and Monad.
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 0.1.4
+    version: 0.2.0
     author: ahmetenesdur
-    category: detailed-transaction
+    category: transaction
 allowed-tools:
     - Bash(npx fibx@latest send *)
     - Bash(npx fibx@latest status)
@@ -16,7 +16,7 @@ allowed-tools:
 
 # Send Transaction
 
-Use this skill to transfer assets. It handles both native ETH and ERC-20 tokens.
+Transfer assets (native ETH/MON or ERC-20 tokens) to a destination address.
 
 ## Hard Rules (CRITICAL)
 
@@ -26,11 +26,20 @@ Use this skill to transfer assets. It handles both native ETH and ERC-20 tokens.
 2.  **Recipient Confirmation**: If the user provides a recipient address that has **NOT** been mentioned in the current conversation history, you **MUST** ask for explicit confirmation before sending.
     - _Agent_: "I am about to send 10 USDC to 0x123...456. Is this correct?"
 3.  **Chain Specification**:
-    - If the user mentions a specific chain (e.g., "on Monad", "for my Citrea wallet"), you **MUST** include the `--chain <name>` parameter.
-    - If the user **DOES NOT** mention a chain, you **MUST** either:
-        - Explicitly state the default: "I will use **Base** for this transaction. Is that correct?"
-        - OR ask for clarification: "Which chain would you like to use? Base, Citrea, HyperEVM, or Monad?"
-4.  **Post-Flight Verification**: After the CLI returns a transaction hash, you **MUST** use the `tx-status` skill to verify it was included in a block and provide the explorer link to the user.
+    - If the user mentions a specific chain, you **MUST** include the `--chain <name>` parameter.
+    - If not mentioned, **MUST** clarify or state default (Base).
+4.  **Post-Flight Verification**: You **MUST** use the `tx-status` skill to verify the transaction hash after sending.
+
+## Input Schema
+
+The agent should extract the following parameters:
+
+| Parameter   | Type   | Description                            | Required             |
+| :---------- | :----- | :------------------------------------- | :------------------- |
+| `amount`    | number | Amount to send (e.g., `0.1`, `100`)    | Yes                  |
+| `recipient` | string | Destination Ethereum address (`0x...`) | Yes                  |
+| `token`     | string | Token symbol (`ETH`, `USDC`)           | No (Default: `ETH`)  |
+| `chain`     | string | Network (`base`, `monad`, etc.)        | No (Default: `base`) |
 
 ## Usage
 
@@ -38,15 +47,7 @@ Use this skill to transfer assets. It handles both native ETH and ERC-20 tokens.
 npx fibx@latest send <amount> <recipient> [token] [--chain <chain>] [--json]
 ```
 
-### Arguments
-
-| Argument    | Description                                                                                      |
-| ----------- | ------------------------------------------------------------------------------------------------ |
-| `amount`    | Amount to send. Use simple numbers (e.g., `0.1`, `10`). Avoid `$` symbols in the command itself. |
-| `recipient` | The destination Ethereum address (`0x...`).                                                      |
-| `token`     | Optional. Token symbol (`ETH`, `USDC`, `WETH`). Defaults to `ETH`.                               |
-
-### Options
+## Options
 
 | Option              | Description                                                             |
 | ------------------- | ----------------------------------------------------------------------- |
@@ -55,31 +56,40 @@ npx fibx@latest send <amount> <recipient> [token] [--chain <chain>] [--json]
 
 ## Examples
 
-### Scenario: Sending USDC
+### Sending USDC
 
 **User:** "Send 10 USDC to 0x123...abc"
 
 **Agent Actions:**
 
-1.  `npx fibx@latest status` (Check auth)
-2.  `npx fibx@latest balance` (Check funds)
-3.  (If address is new) "Please confirm: Send 10 USDC to 0x123...abc?"
-4.  User confirms.
-5.  `npx fibx@latest send 10 0x123...abc USDC`
-6.  `npx fibx@latest tx-status <hash_from_output>`
+1.  Check auth & balance.
+2.  Confirm recipient.
+3.  Send:
+    ```bash
+    npx fibx@latest send 10 0x123...abc USDC
+    ```
+4.  Verify:
+    ```bash
+    npx fibx@latest tx-status <hash>
+    ```
 
-### Scenario: Sending ETH on Monad
+### Sending ETH on Monad
 
 **User:** "Send 0.05 MON to 0xdef...456 on Monad"
 
 **Agent Actions:**
 
-1.  `npx fibx@latest status --chain monad`
-2.  `npx fibx@latest balance --chain monad`
-3.  `npx fibx@latest send 0.05 0xdef...456 ETH --chain monad` (Native token is treated as 'ETH' generic or 'MON')
-4.  `npx fibx@latest tx-status <hash> --chain monad`
+1.  Check status/balance on Monad.
+2.  Send:
+    ```bash
+    npx fibx@latest send 0.05 0xdef...456 ETH --chain monad
+    ```
+3.  Verify on Monad:
+    ```bash
+    npx fibx@latest tx-status <hash> --chain monad
+    ```
 
 ## Error Handling
 
-- **"Insufficient funds"**: Inform the user of their current balance.
-- **"Invalid address"**: Ask the user to check the recipient address.
+- **"Insufficient funds"**: Inform user of current balance.
+- **"Invalid address"**: Validate recipient format.

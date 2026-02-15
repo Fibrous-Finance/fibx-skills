@@ -4,9 +4,9 @@ description: Swap/Trade tokens using Fibrous Finance aggregation. Supports Base,
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.1.2+.
 metadata:
-    version: 0.1.4
+    version: 0.2.0
     author: ahmetenesdur
-    category: detailed-transaction
+    category: transaction
 allowed-tools:
     - Bash(npx fibx@latest trade *)
     - Bash(npx fibx@latest status)
@@ -16,7 +16,7 @@ allowed-tools:
 
 # Trade / Swap Tokens
 
-Use this skill to exchange one token for another. It uses the Fibrous Finance aggregator to find the best route.
+Exchange one token for another using the Fibrous Finance aggregator to find the best route.
 
 ## Hard Rules (CRITICAL)
 
@@ -24,14 +24,23 @@ Use this skill to exchange one token for another. It uses the Fibrous Finance ag
     - `npx fibx@latest status`
     - `npx fibx@latest balance` (ensure you have the _source_ token)
 2.  **Chain Specification**:
-    - If the user mentions a specific chain (e.g., "on Monad", "for my Citrea wallet"), you **MUST** include the `--chain <name>` parameter.
-    - If the user **DOES NOT** mention a chain, you **MUST** either:
-        - Explicitly state the default: "I will perform this trade on **Base**. Is that correct?"
-        - OR ask for clarification: "Which chain would you like to trade on? Base, Citrea, HyperEVM, or Monad?"
+    - If the user mentions a specific chain, you **MUST** include the `--chain <name>` parameter.
+    - If not mentioned, **MUST** clarify or default to **Base**.
 3.  **Slippage Safety**: The default slippage is **0.5%**. If you need to change this (e.g., for volatile tokens), you **MUST** ask the user for confirmation first.
-4.  **Approval Limits**: The CLI defaults to "Exact Approval" (approves only the amount to be swapped).
-    - Do **NOT** use `--approve-max` unless the user explicitly requests "infinite approval" or "max approval".
-5.  **Simulation & Verification**: The CLI performs a route check before swapping. If this fails, do not proceed. After swapping, verify the transaction with the `tx-status` skill.
+4.  **Approval Limits**: The CLI defaults to "Exact Approval". Do **NOT** use `--approve-max` unless explicitly requested.
+5.  **Simulation & Verification**: The CLI performs a route check. If this fails, do not proceed. After swapping, verify with `tx-status`.
+
+## Input Schema
+
+The agent should extract the following parameters:
+
+| Parameter    | Type   | Description                      | Required             |
+| :----------- | :----- | :------------------------------- | :------------------- |
+| `amount`     | number | Amount to swap (e.g., `1.5`)     | Yes                  |
+| `from_token` | string | Source token (e.g., `ETH`)       | Yes                  |
+| `to_token`   | string | Destination token (e.g., `USDC`) | Yes                  |
+| `chain`      | string | Network (`base`, `monad`, etc.)  | No (Default: `base`) |
+| `slippage`   | number | Slippage tolerance (e.g., `1.0`) | No (Default: `0.5`)  |
 
 ## Usage
 
@@ -39,15 +48,7 @@ Use this skill to exchange one token for another. It uses the Fibrous Finance ag
 npx fibx@latest trade <amount> <from_token> <to_token> [options]
 ```
 
-### Arguments
-
-| Argument     | Description                                          |
-| ------------ | ---------------------------------------------------- |
-| `amount`     | Amount to swap (e.g., `1.5`, `100`).                 |
-| `from_token` | Source token symbol (`ETH`, `USDC`) or address.      |
-| `to_token`   | Destination token symbol (`WETH`, `DAI`) or address. |
-
-### Options
+## Options
 
 | Option              | Description                                                      |
 | ------------------- | ---------------------------------------------------------------- |
@@ -64,21 +65,15 @@ npx fibx@latest trade <amount> <from_token> <to_token> [options]
 
 **Agent Actions:**
 
-1.  `npx fibx@latest status`
-2.  `npx fibx@latest balance`
-3.  `npx fibx@latest trade 0.1 ETH USDC`
-4.  `npx fibx@latest tx-status <hash>`
-
-### Swap with Custom Slippage
-
-**User:** "Swap 1000 DEGEN to ETH with 2% slippage"
-
-**Agent Actions:**
-
-1.  Checks info.
-2.  **Agent**: "Confirming: You want to swap 1000 DEGEN to ETH with **2%** slippage. Is this correct?"
-3.  User confirms.
-4.  `npx fibx@latest trade 1000 DEGEN ETH --slippage 2`
+1.  Check status/balance.
+2.  Trade:
+    ```bash
+    npx fibx@latest trade 0.1 ETH USDC
+    ```
+3.  Verify:
+    ```bash
+    npx fibx@latest tx-status <hash>
+    ```
 
 ### Swap on Monad
 
@@ -86,11 +81,18 @@ npx fibx@latest trade <amount> <from_token> <to_token> [options]
 
 **Agent Actions:**
 
-1.  `npx fibx@latest status --chain monad`
-2.  `npx fibx@latest trade 1 MON USDC --chain monad`
+1.  Check status/balance on Monad.
+2.  Trade:
+    ```bash
+    npx fibx@latest trade 1 MON USDC --chain monad
+    ```
+3.  Verify:
+    ```bash
+    npx fibx@latest tx-status <hash> --chain monad
+    ```
 
 ## Error Handling
 
 - **"No route found"**: The trade path might not exist or liquidity is too low.
 - **"Insufficient balance"**: Check `balance` again.
-- **"Slippage exceeded"**: The price moved unfavorably; suggest retrying with higher slippage (after user confirmation).
+- **"Slippage exceeded"**: Logic moved unfavorably; suggest retrying with higher slippage.
