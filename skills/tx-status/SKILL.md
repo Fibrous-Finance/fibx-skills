@@ -4,7 +4,7 @@ description: Check transaction status, receipt details, and explorer link.
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
 metadata:
-    version: 0.2.1
+    version: 0.2.3
     author: ahmetenesdur
     category: utility
 allowed-tools:

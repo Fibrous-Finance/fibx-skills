@@ -4,7 +4,7 @@ description: Swap/Trade tokens using Fibrous Finance aggregation. Supports Base,
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
 metadata:
-    version: 0.2.1
+    version: 0.2.3
     author: ahmetenesdur
     category: transaction
 allowed-tools:
@@ -28,7 +28,7 @@ Exchange one token for another using the Fibrous Finance aggregator to find the 
     - If not mentioned, **MUST** clarify or default to **Base**.
 3.  **Slippage Safety**: The default slippage is **0.5%**. If you need to change this (e.g., for volatile tokens), you **MUST** ask the user for confirmation first.
 4.  **Approval Limits**: The CLI defaults to "Exact Approval". Do **NOT** use `--approve-max` unless explicitly requested.
-5.  **Simulation & Verification**: The CLI performs a route check. If this fails, do not proceed. After swapping, verify with `tx-status`.
+5.  **Simulation & Verification**: The CLI performs a **Swap Simulation** before asking for a signature. If the route is invalid or the transaction would revert, the CLI will error out early. Always verify success with `tx-status` after execution.
 
 ## Input Schema
 

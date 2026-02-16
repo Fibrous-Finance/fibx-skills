@@ -4,13 +4,14 @@ description: Sign in to the wallet using email OTP (Privy) or Import a Private K
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
 metadata:
-    version: 0.2.1
+    version: 0.2.3
     author: ahmetenesdur
     category: auth
 allowed-tools:
     - Bash(npx fibx@latest auth login *)
     - Bash(npx fibx@latest auth verify *)
     - Bash(npx fibx@latest auth import *)
+    - Bash(npx fibx@latest auth logout)
     - Bash(npx fibx@latest status)
 ---
 
@@ -61,6 +62,12 @@ _Note: This is interactive. You will be prompted to enter your private key secur
 
 ```bash
 npx fibx@latest status
+```
+
+### Logout
+
+```bash
+npx fibx@latest auth logout
 ```
 
 ## Examples

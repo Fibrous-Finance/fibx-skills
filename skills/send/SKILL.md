@@ -4,7 +4,7 @@ description: Send ETH or ERC-20 tokens to another address. Supports Base, Citrea
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
 metadata:
-    version: 0.2.1
+    version: 0.2.3
     author: ahmetenesdur
     category: transaction
 allowed-tools:
@@ -23,6 +23,7 @@ Transfer assets (native ETH/MON or ERC-20 tokens) to a destination address.
 1.  **Pre-Flight Check**: Before ANY send operation, you **MUST** run:
     - `npx fibx@latest status` (to ensure connectivity)
     - `npx fibx@latest balance` (to ensure sufficient funds)
+    - **Note**: The CLI automatically performs a **Simulation** before sending. If the simulation fails (e.g., due to insufficient funds or contract error), the CLI will exit with an error before asking for a signature.
 2.  **Recipient Confirmation**: If the user provides a recipient address that has **NOT** been mentioned in the current conversation history, you **MUST** ask for explicit confirmation before sending.
     - _Agent_: "I am about to send 10 USDC to 0x123...456. Is this correct?"
 3.  **Chain Specification**:

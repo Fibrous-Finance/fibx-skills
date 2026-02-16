@@ -4,7 +4,7 @@ description: Manage DeFi positions (Supply, Borrow, Repay, Withdraw) on Aave V3.
 license: MIT
 compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
 metadata:
-    version: 0.2.1
+    version: 0.2.3
     author: ahmetenesdur
     category: defi-management
 allowed-tools:
@@ -50,13 +50,18 @@ npx fibx@latest aave <action> [amount] [token] [options]
 
 ## Actions
 
-| Action     | Description                                        | usage Example                            |
-| ---------- | -------------------------------------------------- | ---------------------------------------- |
-| `status`   | Check Account Data (Health Factor, LTV, Net Worth) | `npx fibx@latest aave status`            |
-| `supply`   | Deposit assets to earn yield                       | `npx fibx@latest aave supply 100 USDC`   |
-| `borrow`   | Borrow assets (requires collateral)                | `npx fibx@latest aave borrow 0.5 ETH`    |
-| `repay`    | Repay a borrowed position                          | `npx fibx@latest aave repay 50 USDC`     |
-| `withdraw` | Withdraw supplied assets                           | `npx fibx@latest aave withdraw 100 USDC` |
+| Action     | Description                                          | usage Example                                                       |
+| ---------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
+| `status`   | Check Account Data (Health Factor, LTV, Net Worth)   | `npx fibx@latest aave status`                                       |
+| `supply`   | Deposit assets to earn yield                         | `npx fibx@latest aave supply 100 USDC`                              |
+| `borrow`   | Borrow assets (requires collateral)                  | `npx fibx@latest aave borrow 0.5 ETH`                               |
+| `repay`    | Repay a borrowed position (Use `max` to repay all)   | `npx fibx@latest aave repay 50 USDC` or `... repay USDC max`        |
+| `withdraw` | Withdraw supplied assets (Use `max` to withdraw all) | `npx fibx@latest aave withdraw 100 USDC` or `... withdraw USDC max` |
+
+## Dust Handling (IMPORTANT)
+
+- **"max" Keyword**: When repaying or withdrawing, using the keyword `max` as the amount is **HIGHLY RECOMMENDED** if the user wants to close a position entirely.
+- **Why?**: Passing `max` sends `MAX_UINT256` to the contract, ensuring that **all** accrued interest is covered and no "dust" (tiny residual balance like `0.000001`) remains.
 
 ## Examples
 

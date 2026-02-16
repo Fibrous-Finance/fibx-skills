@@ -41,6 +41,7 @@ export PRIVATE_KEY="your-wallet-private-key" # For direct signing if not using P
 ### Common Triggers
 
 - "Log me in with user@example.com" → Triggers [`authenticate-wallet`](./skills/authenticate-wallet/SKILL.md)
+- "Log me out" → Triggers [`authenticate-wallet`](./skills/authenticate-wallet/SKILL.md)
 - "Import my private key" → Triggers [`authenticate-wallet`](./skills/authenticate-wallet/SKILL.md)
 - "Check my balance" → Triggers [`balance`](./skills/balance/SKILL.md)
 - "Send 10 USDC to 0x123..." → Triggers [`send`](./skills/send/SKILL.md)
@@ -61,6 +62,7 @@ export PRIVATE_KEY="your-wallet-private-key" # For direct signing if not using P
     ```bash
     npx fibx@latest trade 0.05 ETH USDC --chain base
     ```
+    _(CLI automatically simulates the swap first)_
 4.  **Verification**: Agent uses `tx-status` to confirm success.
 
 ## License
