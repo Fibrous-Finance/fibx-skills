@@ -1,10 +1,10 @@
 ---
 name: balance
-description: Check wallet balances (ETH, USDC, etc.) on supported chains.
+description: Check wallet balances (Native, ERC-20, etc.) on supported chains.
 license: MIT
-compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
+compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.6+.
 metadata:
-    version: 0.2.3
+    version: 0.2.6
     author: ahmetenesdur
     category: wallet-data
 allowed-tools:
@@ -58,6 +58,11 @@ npx fibx@latest balance
 ```bash
 npx fibx@latest balance --chain monad
 ```
+
+## Cross-Skill Integration
+
+- **Pre-Flight for `send` and `trade`**: Always check balance before sending or trading.
+- **Aave Collateral Check**: Use balance to confirm available assets before supplying to Aave.
 
 ## Error Handling
 

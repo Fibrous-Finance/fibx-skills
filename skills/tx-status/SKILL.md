@@ -2,9 +2,9 @@
 name: tx-status
 description: Check transaction status, receipt details, and explorer link.
 license: MIT
-compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
+compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.6+.
 metadata:
-    version: 0.2.3
+    version: 0.2.6
     author: ahmetenesdur
     category: utility
 allowed-tools:
@@ -70,6 +70,10 @@ npx fibx@latest tx-status 0xabc...def --chain monad
 	"explorerLink": "https://..."
 }
 ```
+
+## Cross-Skill Integration
+
+- **Post-Flight for `send` and `trade`**: This skill is the verification step after any on-chain transaction. Always pass the same `--chain` flag used in the original command.
 
 ## Error Handling
 

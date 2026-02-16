@@ -2,9 +2,9 @@
 name: aave
 description: Manage DeFi positions (Supply, Borrow, Repay, Withdraw) on Aave V3. Currently supports Base network only.
 license: MIT
-compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
+compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.6+.
 metadata:
-    version: 0.2.3
+    version: 0.2.6
     author: ahmetenesdur
     category: defi-management
 allowed-tools:
@@ -55,8 +55,8 @@ npx fibx@latest aave <action> [amount] [token] [options]
 | `status`   | Check Account Data (Health Factor, LTV, Net Worth)   | `npx fibx@latest aave status`                                       |
 | `supply`   | Deposit assets to earn yield                         | `npx fibx@latest aave supply 100 USDC`                              |
 | `borrow`   | Borrow assets (requires collateral)                  | `npx fibx@latest aave borrow 0.5 ETH`                               |
-| `repay`    | Repay a borrowed position (Use `max` to repay all)   | `npx fibx@latest aave repay 50 USDC` or `... repay USDC max`        |
-| `withdraw` | Withdraw supplied assets (Use `max` to withdraw all) | `npx fibx@latest aave withdraw 100 USDC` or `... withdraw USDC max` |
+| `repay`    | Repay a borrowed position (Use `max` to repay all)   | `npx fibx@latest aave repay 50 USDC` or `... repay max USDC`        |
+| `withdraw` | Withdraw supplied assets (Use `max` to withdraw all) | `npx fibx@latest aave withdraw 100 USDC` or `... withdraw max USDC` |
 
 ## Dust Handling (IMPORTANT)
 

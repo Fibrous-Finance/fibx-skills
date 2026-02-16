@@ -2,9 +2,9 @@
 name: trade
 description: Swap/Trade tokens using Fibrous Finance aggregation. Supports Base, Citrea, HyperEVM, and Monad.
 license: MIT
-compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
+compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.6+.
 metadata:
-    version: 0.2.3
+    version: 0.2.6
     author: ahmetenesdur
     category: transaction
 allowed-tools:

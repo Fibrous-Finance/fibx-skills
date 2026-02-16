@@ -2,15 +2,15 @@
 name: authenticate-wallet
 description: Sign in to the wallet using email OTP (Privy) or Import a Private Key. Required for all private wallet operations.
 license: MIT
-compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
+compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.6+.
 metadata:
-    version: 0.2.3
+    version: 0.2.6
     author: ahmetenesdur
     category: auth
 allowed-tools:
     - Bash(npx fibx@latest auth login *)
     - Bash(npx fibx@latest auth verify *)
-    - Bash(npx fibx@latest auth import *)
+    - Bash(npx fibx@latest auth import)
     - Bash(npx fibx@latest auth logout)
     - Bash(npx fibx@latest status)
 ---
@@ -56,7 +56,9 @@ npx fibx@latest auth verify <email> <code>
 npx fibx@latest auth import
 ```
 
-_Note: This is interactive. You will be prompted to enter your private key securely._
+> **⚠️ INTERACTIVE COMMAND**: This command opens an interactive prompt. The agent **CANNOT** pass the private key as a CLI argument. You must instruct the user to run this command themselves in their terminal, or run it via the agent's terminal tool and let the user type the key into the prompt.
+
+_Note: The private key is stored locally in an encrypted session file._
 
 ### Check Status
 

@@ -2,9 +2,9 @@
 name: send
 description: Send ETH or ERC-20 tokens to another address. Supports Base, Citrea, HyperEVM, and Monad.
 license: MIT
-compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.1+.
+compatibility: Requires Node.js and npx. Works with fibx CLI v0.2.6+.
 metadata:
-    version: 0.2.3
+    version: 0.2.6
     author: ahmetenesdur
     category: transaction
 allowed-tools:
@@ -29,18 +29,19 @@ Transfer assets (native ETH/MON or ERC-20 tokens) to a destination address.
 3.  **Chain Specification**:
     - If the user mentions a specific chain, you **MUST** include the `--chain <name>` parameter.
     - If not mentioned, **MUST** clarify or state default (Base).
-4.  **Post-Flight Verification**: You **MUST** use the `tx-status` skill to verify the transaction hash after sending.
+4.  **Native Token Naming**: The CLI supports native token symbols for each chain. You should use the correct symbol: `ETH` (Base), `MON` (Monad), `cBTC` (Citrea), `HYPE` (HyperEVM). Do **NOT** force `ETH` on non-Base chains.
+5.  **Post-Flight Verification**: You **MUST** use the `tx-status` skill to verify the transaction hash after sending.
 
 ## Input Schema
 
 The agent should extract the following parameters:
 
-| Parameter   | Type   | Description                            | Required             |
-| :---------- | :----- | :------------------------------------- | :------------------- |
-| `amount`    | number | Amount to send (e.g., `0.1`, `100`)    | Yes                  |
-| `recipient` | string | Destination Ethereum address (`0x...`) | Yes                  |
-| `token`     | string | Token symbol (`ETH`, `USDC`)           | No (Default: `ETH`)  |
-| `chain`     | string | Network (`base`, `monad`, etc.)        | No (Default: `base`) |
+| Parameter   | Type   | Description                            | Required                   |
+| :---------- | :----- | :------------------------------------- | :------------------------- |
+| `amount`    | number | Amount to send (e.g., `0.1`, `100`)    | Yes                        |
+| `recipient` | string | Destination Ethereum address (`0x...`) | Yes                        |
+| `token`     | string | Token symbol (`ETH`, `MON`, `USDC`)    | No (Default: chain native) |
+| `chain`     | string | Network (`base`, `monad`, etc.)        | No (Default: `base`)       |
 
 ## Usage
 
@@ -83,7 +84,7 @@ npx fibx@latest send <amount> <recipient> [token] [--chain <chain>] [--json]
 1.  Check status/balance on Monad.
 2.  Send:
     ```bash
-    npx fibx@latest send 0.05 0xdef...456 ETH --chain monad
+    npx fibx@latest send 0.05 0xdef...456 MON --chain monad
     ```
 3.  Verify on Monad:
     ```bash
