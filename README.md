@@ -9,7 +9,7 @@
 | [authenticate-wallet](./skills/authenticate-wallet/SKILL.md) | Email OTP login, private key import, session mgmt | Auth     |
 | [balance](./skills/balance/SKILL.md)                         | Check native and ERC-20 token balances            | Wallet   |
 | [send](./skills/send/SKILL.md)                               | Send native or ERC-20 tokens to an address        | Tx       |
-| [trade](./skills/trade/SKILL.md)                             | Swap tokens via Fibrous Finance aggregation       | Tx       |
+| [trade](./skills/trade/SKILL.md)                             | Swap tokens via Fibrous aggregation               | Tx       |
 | [aave](./skills/aave/SKILL.md)                               | Aave V3: supply, borrow, repay, withdraw (Base)   | DeFi     |
 | [tx-status](./skills/tx-status/SKILL.md)                     | Check transaction status and explorer link        | Utility  |
 
@@ -17,8 +17,7 @@
 
 1. Install `Node.js` (v18+) and `npm`.
 2. No installation of `fibx` is needed — all skills use `npx fibx@latest`.
-3. For email OTP authentication, a running [fibx-server](https://github.com/ahmetenesdur/fibx-server) instance is required.
-4. Import the skills from the `./skills` directory into your agent's skill registry.
+3. Import the skills from the `./skills` directory into your agent's skill registry.
 
 ## Supported Chains
 
@@ -44,12 +43,6 @@
 | "Did my transaction go through?"  | `tx-status`           |
 
 ## Typical Workflow
-
-```
-authenticate-wallet → balance → send/trade → tx-status
-                                  ↕
-                                aave
-```
 
 1. **Authenticate** — `authenticate-wallet` (required first)
 2. **Check funds** — `balance`

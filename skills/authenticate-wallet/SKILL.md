@@ -2,9 +2,9 @@
 name: authenticate-wallet
 description: Authenticate the fibx CLI wallet via email OTP (Privy) or private key import. Required before any wallet operation (balance, send, trade, aave).
 license: MIT
-compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.3.1+.
+compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.3.2+.
 metadata:
-    version: 0.3.1
+    version: 0.3.2
     author: ahmetenesdur
     category: auth
 allowed-tools:
@@ -21,7 +21,6 @@ Manage the authentication session for the `fibx` CLI. Supports two methods: emai
 
 ## Prerequisites
 
-- `fibx-server` must be running (for email OTP method only)
 - No active session required — this skill creates one
 
 ## Rules
