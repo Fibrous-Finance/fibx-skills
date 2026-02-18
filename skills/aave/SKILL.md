@@ -2,9 +2,9 @@
 name: aave
 description: Manage Aave V3 DeFi positions on Base — supply, borrow, repay, withdraw, and check account health. Includes liquidation safety checks.
 license: MIT
-compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.3.4+.
+compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.3.5+.
 metadata:
-    version: 0.3.4
+    version: 0.3.5
     author: ahmetenesdur
     category: defi-management
 allowed-tools:
@@ -30,8 +30,8 @@ Interact with the Aave V3 lending protocol on **Base only**. Supply assets to ea
 3. BEFORE `borrow`, you MUST run `npx fibx@latest aave status` to check the Health Factor:
     - Health Factor < **1.5** → WARN the user about liquidation risk.
     - Health Factor < **1.1** → DO NOT proceed without explicit double-confirmation from the user.
-4. When the user wants to fully close a position, ALWAYS use `max` as the amount for `repay` and `withdraw`. This sends `MAX_UINT256` to the contract and prevents dust residuals.
-5. When supplying or withdrawing ETH, the CLI handles the ETH ↔ WETH conversion automatically. Use `ETH` as the token symbol.
+4. When the user wants to fully close a position, ALWAYS use `max` as the amount for `repay` and `withdraw`. This sends `MAX_UINT256` to the contract.
+5. **Auto-Wrap/Unwrap**: When supplying, repaying, or withdrawing ETH, the CLI automatically handles the ETH ↔ WETH conversion. You can safely use `ETH` as the token symbol for these actions.
 
 ## Commands
 
@@ -41,13 +41,13 @@ npx fibx@latest aave <action> [amount] [token] [--json]
 
 ## Actions
 
-| Action     | Description                    | Example                                  |
-| ---------- | ------------------------------ | ---------------------------------------- |
-| `status`   | Account health, LTV, net worth | `npx fibx@latest aave status`            |
-| `supply`   | Deposit assets to earn yield   | `npx fibx@latest aave supply 100 USDC`   |
-| `borrow`   | Borrow against collateral      | `npx fibx@latest aave borrow 0.5 ETH`    |
-| `repay`    | Repay borrowed position        | `npx fibx@latest aave repay max USDC`    |
-| `withdraw` | Withdraw supplied assets       | `npx fibx@latest aave withdraw max USDC` |
+| Action     | Description                                | Example                                 |
+| ---------- | ------------------------------------------ | --------------------------------------- |
+| `status`   | Account health, LTV, net worth             | `npx fibx@latest aave status`           |
+| `supply`   | Deposit assets (auto-wraps ETH)            | `npx fibx@latest aave supply 1 ETH`     |
+| `borrow`   | Borrow against collateral                  | `npx fibx@latest aave borrow 50 USDC`   |
+| `repay`    | Repay debt (auto-wraps ETH)                | `npx fibx@latest aave repay max ETH`    |
+| `withdraw` | Withdraw assets (auto-unwraps WETH -> ETH) | `npx fibx@latest aave withdraw max ETH` |
 
 ## Parameters
 
@@ -77,25 +77,25 @@ npx fibx@latest aave withdraw max USDC   # Withdraws entire supplied position
 npx fibx@latest aave status
 ```
 
-**User:** "Supply 100 USDC to Aave"
+**User:** "Supply 1 ETH to Aave"
 
 ```bash
 npx fibx@latest balance
-npx fibx@latest aave supply 100 USDC
+npx fibx@latest aave supply 1 ETH
 ```
 
-**User:** "Borrow 0.5 ETH from Aave"
+**User:** "Borrow 100 USDC"
 
 ```bash
 npx fibx@latest aave status
 # If Health Factor > 1.5:
-npx fibx@latest aave borrow 0.5 ETH
+npx fibx@latest aave borrow 100 USDC
 ```
 
-**User:** "Repay all my USDC debt"
+**User:** "Repay my ETH debt"
 
 ```bash
-npx fibx@latest aave repay max USDC
+npx fibx@latest aave repay max ETH
 ```
 
 ## Error Handling

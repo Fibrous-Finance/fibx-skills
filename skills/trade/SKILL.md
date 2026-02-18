@@ -2,9 +2,9 @@
 name: trade
 description: Swap tokens using Fibrous aggregation on Base, Citrea, HyperEVM, or Monad. Finds optimal route, simulates before execution.
 license: MIT
-compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.3.4+.
+compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.3.5+.
 metadata:
-    version: 0.3.4
+    version: 0.3.5
     author: ahmetenesdur
     category: transaction
 allowed-tools:
@@ -18,6 +18,8 @@ allowed-tools:
 # Trade / Swap Tokens
 
 Exchange one token for another via Fibrous aggregation. The CLI finds the best route, handles token approvals, simulates the swap, and executes.
+
+> **Note:** Automatically detects and executes **Wrap** (Native -> Wrapped) and **Unwrap** (Wrapped -> Native) operations directly via contract calls, bypassing aggregation to save gas.
 
 ## Prerequisites
 
@@ -78,6 +80,24 @@ npx fibx@latest tx-status <hash>
 npx fibx@latest status
 npx fibx@latest balance --chain monad
 npx fibx@latest trade 1 MON USDC --chain monad
+npx fibx@latest tx-status <hash> --chain monad
+```
+
+**User:** "Wrap 1 ETH to WETH on Base"
+
+```bash
+npx fibx@latest status
+npx fibx@latest balance
+npx fibx@latest trade 1 ETH WETH --chain base
+npx fibx@latest tx-status <hash>
+```
+
+**User:** "Unwrap 0.5 wMON on Monad"
+
+```bash
+npx fibx@latest status
+npx fibx@latest balance --chain monad
+npx fibx@latest trade 0.5 wMON MON --chain monad
 npx fibx@latest tx-status <hash> --chain monad
 ```
 

@@ -46,8 +46,8 @@ npx skills add Fibrous-Finance/fibx-skills
 | "Check my balance"                | `balance`             |
 | "Send 10 USDC to 0x123..."        | `send`                |
 | "Swap 0.05 ETH to USDC"           | `trade`               |
-| "Supply 100 USDC to Aave"         | `aave`                |
-| "How is my Aave position?"        | `aave`                |
+| "Supply 1 ETH to Aave"            | `aave`                |
+| "Repay my ETH debt"               | `aave`                |
 | "Did my transaction go through?"  | `tx-status`           |
 
 ## Typical Workflow

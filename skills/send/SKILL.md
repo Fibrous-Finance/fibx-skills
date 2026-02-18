@@ -2,9 +2,9 @@
 name: send
 description: Send native tokens (ETH, cBTC, HYPE, MON) or ERC-20 tokens to an address on Base, Citrea, HyperEVM, or Monad. Simulates before sending.
 license: MIT
-compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.3.4+.
+compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.3.5+.
 metadata:
-    version: 0.3.4
+    version: 0.3.5
     author: ahmetenesdur
     category: transaction
 allowed-tools:
