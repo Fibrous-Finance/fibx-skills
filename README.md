@@ -13,6 +13,14 @@
 | [aave](./skills/aave/SKILL.md)                               | Aave V3: supply, borrow, repay, withdraw (Base)   | DeFi     |
 | [tx-status](./skills/tx-status/SKILL.md)                     | Check transaction status and explorer link        | Utility  |
 
+## Installation
+
+Install with [Vercel's Skills CLI](https://skills.sh):
+
+```bash
+npx skills add Fibrous-Finance/fibx-skills
+```
+
 ## Getting Started
 
 1. Install `Node.js` (v18+) and `npm`.
