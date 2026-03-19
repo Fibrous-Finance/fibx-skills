@@ -34,6 +34,12 @@ npx fibx@latest config set-rpc <chain> <url>
 # Get current RPC
 npx fibx@latest config get-rpc <chain>
 
+# Reset a single chain to default
+npx fibx@latest config reset-rpc <chain>
+
+# Reset all chains to default
+npx fibx@latest config reset-rpc
+
 # List all configs
 npx fibx@latest config list
 ```
@@ -60,11 +66,16 @@ npx fibx@latest config set-rpc base https://mainnet.base.org
 npx fibx@latest config list
 ```
 
-**User:** "Reset Base RPC to default?"
-**Agent:** (Currently no reset command, but user can overwrite or manually delete config) "I will set it to a known good public RPC."
+**User:** "Reset Base RPC to default."
 
 ```bash
-npx fibx@latest config set-rpc base https://mainnet.base.org
+npx fibx@latest config reset-rpc base
+```
+
+**User:** "Reset all custom RPCs."
+
+```bash
+npx fibx@latest config reset-rpc
 ```
 
 ## Error Handling
