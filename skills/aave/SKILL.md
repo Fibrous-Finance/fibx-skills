@@ -1,10 +1,10 @@
 ---
 name: aave
-description: Manage Aave V3 DeFi positions on Base — supply, borrow, repay, withdraw, and check account health. Includes liquidation safety checks.
+description: Manage Aave V3 DeFi positions on Base — supply, borrow, repay, withdraw, view markets, and check account health. Includes liquidation safety checks.
 license: MIT
-compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.4.2+.
+compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.4.2
+    version: 0.5.0
     author: ahmetenesdur
     category: defi-management
 allowed-tools:
@@ -16,12 +16,13 @@ allowed-tools:
 
 # Aave V3 Management
 
-Interact with the Aave V3 lending protocol on **Base only**. Supply assets to earn yield, borrow against collateral, repay debt, or withdraw.
+Interact with the Aave V3 lending protocol on **Base only**. View market data, supply assets to earn yield, borrow against collateral, repay debt, or withdraw.
 
 ## Prerequisites
 
-- Active session required.
-- Sufficient ETH on Base for gas fees.
+- Active session required for `status`, `supply`, `borrow`, `repay`, `withdraw`.
+- `markets` does **not** require authentication — it is a public on-chain query.
+- Sufficient ETH on Base for gas fees (transactional actions only).
 
 ## Rules
 
@@ -36,7 +37,7 @@ Interact with the Aave V3 lending protocol on **Base only**. Supply assets to ea
 ## Commands
 
 ```bash
-npx fibx@latest aave <action> [amount] [token] [--json]
+npx fibx@latest aave <action> [amount] [token] [--simulate] [--json]
 ```
 
 ## Actions
@@ -44,6 +45,7 @@ npx fibx@latest aave <action> [amount] [token] [--json]
 | Action     | Description                                | Example                                 |
 | ---------- | ------------------------------------------ | --------------------------------------- |
 | `status`   | Account health, LTV, net worth             | `npx fibx@latest aave status`           |
+| `markets`  | List all active reserves with APY & TVL    | `npx fibx@latest aave markets`          |
 | `supply`   | Deposit assets (auto-wraps ETH)            | `npx fibx@latest aave supply 1 ETH`     |
 | `borrow`   | Borrow against collateral                  | `npx fibx@latest aave borrow 50 USDC`   |
 | `repay`    | Repay debt (auto-wraps ETH)                | `npx fibx@latest aave repay max ETH`    |
@@ -51,12 +53,13 @@ npx fibx@latest aave <action> [amount] [token] [--json]
 
 ## Parameters
 
-| Parameter | Type   | Description                                          | Required              |
-| --------- | ------ | ---------------------------------------------------- | --------------------- |
-| `action`  | string | `status`, `supply`, `borrow`, `repay`, or `withdraw` | Yes                   |
-| `amount`  | string | Amount or `max` (for full repay/withdraw)            | Yes (except `status`) |
-| `token`   | string | Token symbol (`USDC`, `ETH`, `DAI`, etc.)            | Yes (except `status`) |
-| `json`    | flag   | Output as JSON                                       | No                    |
+| Parameter  | Type   | Description                                                     | Required                        |
+| ---------- | ------ | --------------------------------------------------------------- | ------------------------------- |
+| `action`   | string | `status`, `markets`, `supply`, `borrow`, `repay`, or `withdraw` | Yes                             |
+| `amount`   | string | Amount or `max` (for full repay/withdraw)                       | Yes (except `status`/`markets`) |
+| `token`    | string | Token symbol (`USDC`, `ETH`, `DAI`, etc.)                       | Yes (except `status`/`markets`) |
+| `simulate` | flag   | Estimate gas without executing the transaction                  | No                              |
+| `json`     | flag   | Output as JSON                                                  | No                              |
 
 ## Dust Handling
 
@@ -71,6 +74,12 @@ npx fibx@latest aave withdraw max USDC   # Withdraws entire supplied position
 
 ## Examples
 
+**User:** "What markets are available on Aave?"
+
+```bash
+npx fibx@latest aave markets
+```
+
 **User:** "How is my Aave position doing?"
 
 ```bash
@@ -82,6 +91,12 @@ npx fibx@latest aave status
 ```bash
 npx fibx@latest balance
 npx fibx@latest aave supply 1 ETH
+```
+
+**User:** "How much gas would supplying 1 ETH cost?"
+
+```bash
+npx fibx@latest aave supply 1 ETH --simulate
 ```
 
 **User:** "Borrow 100 USDC"

@@ -2,9 +2,9 @@
 name: trade
 description: Swap tokens using Fibrous aggregation on Base, Citrea, HyperEVM, or Monad. Finds optimal route, simulates before execution.
 license: MIT
-compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.4.2+.
+compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.4.2
+    version: 0.5.0
     author: ahmetenesdur
     category: transaction
 allowed-tools:
@@ -46,7 +46,7 @@ Exchange one token for another via Fibrous aggregation. The CLI finds the best r
 ## Commands
 
 ```bash
-npx fibx@latest trade <amount> <from_token> <to_token> [--chain <chain>] [--slippage <n>] [--approve-max] [--json]
+npx fibx@latest trade <amount> <from_token> <to_token> [--chain <chain>] [--slippage <n>] [--approve-max] [--simulate] [--json]
 ```
 
 ## Parameters
@@ -59,6 +59,7 @@ npx fibx@latest trade <amount> <from_token> <to_token> [--chain <chain>] [--slip
 | `chain`       | string | `base`, `citrea`, `hyperevm`, or `monad` | No       |
 | `slippage`    | number | Slippage tolerance in % (e.g. `1.0`)     | No       |
 | `approve-max` | flag   | Use infinite approval instead of exact   | No       |
+| `simulate`    | flag   | Estimate gas without executing           | No       |
 | `json`        | flag   | Output as JSON                           | No       |
 
 Default chain: `base`. Default slippage: `0.5`.

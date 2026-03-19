@@ -2,9 +2,9 @@
 name: tx-status
 description: Check the on-chain status of a transaction and get the block explorer link. Supports Base, Citrea, HyperEVM, and Monad.
 license: MIT
-compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.4.2+.
+compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.4.2
+    version: 0.5.0
     author: ahmetenesdur
     category: utility
 allowed-tools:

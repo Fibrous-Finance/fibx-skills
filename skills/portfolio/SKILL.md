@@ -2,9 +2,9 @@
 name: portfolio
 description: Show a consolidated cross-chain portfolio overview with USD valuations for all token holdings and DeFi positions. Use when the user asks about their portfolio, net worth, total value, or asset breakdown across chains.
 license: MIT
-compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.4.2+.
+compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.4.2
+    version: 0.5.0
     author: ahmetenesdur
     category: wallet-data
 allowed-tools:
@@ -51,28 +51,28 @@ Displays chain-grouped token holdings with USD values, Aave V3 DeFi positions (i
 
 ```json
 {
-  "wallet": "0x...",
-  "chains": [
-    {
-      "chain": "base",
-      "totalUsd": 205.48,
-      "assets": [
-        { "symbol": "ETH", "balance": "0.0042", "price": 2350.00, "usdValue": 9.87 },
-        { "symbol": "USDC", "balance": "125.50", "price": 1.00, "usdValue": 125.50 }
-      ]
-    }
-  ],
-  "defi": [
-    {
-      "protocol": "Aave V3",
-      "chain": "base",
-      "collateralUsd": 500.00,
-      "debtUsd": 200.00,
-      "healthFactor": "2.50",
-      "netUsd": 300.00
-    }
-  ],
-  "totalUsd": 517.98
+	"wallet": "0x...",
+	"chains": [
+		{
+			"chain": "base",
+			"totalUsd": 205.48,
+			"assets": [
+				{ "symbol": "ETH", "balance": "0.0042", "price": 2350.0, "usdValue": 9.87 },
+				{ "symbol": "USDC", "balance": "125.50", "price": 1.0, "usdValue": 125.5 }
+			]
+		}
+	],
+	"defi": [
+		{
+			"protocol": "Aave V3",
+			"chain": "base",
+			"collateralUsd": 500.0,
+			"debtUsd": 200.0,
+			"healthFactor": "2.50",
+			"netUsd": 300.0
+		}
+	],
+	"totalUsd": 517.98
 }
 ```
 

@@ -11,7 +11,7 @@
 | [portfolio](./skills/portfolio/SKILL.md)                     | Cross-chain portfolio with USD values             | Wallet   |
 | [send](./skills/send/SKILL.md)                               | Send native or ERC-20 tokens to an address        | Tx       |
 | [trade](./skills/trade/SKILL.md)                             | Swap tokens via Fibrous aggregation               | Tx       |
-| [aave](./skills/aave/SKILL.md)                               | Aave V3: supply, borrow, repay, withdraw (Base)   | DeFi     |
+| [aave](./skills/aave/SKILL.md)                               | Aave V3: status, markets, supply, borrow, repay, withdraw   | DeFi     |
 | [tx-status](./skills/tx-status/SKILL.md)                     | Check transaction status and explorer link        | Utility  |
 | [config](./skills/config/SKILL.md)                           | Set custom RPC URLs to avoid rate limits          | Utility  |
 
@@ -57,6 +57,7 @@ git clone https://github.com/Fibrous-Finance/fibx-skills.git .skills/fibx-skills
 | "Send 10 USDC to 0x123..."        | `send`                |
 | "Swap 0.05 ETH to USDC"           | `trade`               |
 | "Supply 1 ETH to Aave"            | `aave`                |
+| "What markets are on Aave?"       | `aave`                |
 | "Repay my ETH debt"               | `aave`                |
 | "Did my transaction go through?"  | `tx-status`           |
 | "I'm getting rate limited"        | `config`              |

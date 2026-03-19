@@ -2,9 +2,9 @@
 name: send
 description: Send native tokens (ETH, cBTC, HYPE, MON) or ERC-20 tokens to an address on Base, Citrea, HyperEVM, or Monad. Simulates before sending.
 license: MIT
-compatibility: Requires Node.js 18+ and npx. Works with fibx CLI v0.4.2+.
+compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.4.2
+    version: 0.5.0
     author: ahmetenesdur
     category: transaction
 allowed-tools:
@@ -44,7 +44,7 @@ Transfer native tokens or ERC-20 tokens to a destination address. The CLI automa
 ## Commands
 
 ```bash
-npx fibx@latest send <amount> <recipient> [token] [--chain <chain>] [--json]
+npx fibx@latest send <amount> <recipient> [token] [--chain <chain>] [--simulate] [--json]
 ```
 
 If `token` is omitted, the chain's native token is used.
@@ -57,6 +57,7 @@ If `token` is omitted, the chain's native token is used.
 | `recipient` | string | Destination address (`0x...`)            | Yes      |
 | `token`     | string | Token symbol (e.g. `USDC`, `ETH`, `MON`) | No       |
 | `chain`     | string | `base`, `citrea`, `hyperevm`, or `monad` | No       |
+| `simulate`  | flag   | Estimate gas without executing           | No       |
 | `json`      | flag   | Output as JSON                           | No       |
 
 Default token: chain native. Default chain: `base`.
