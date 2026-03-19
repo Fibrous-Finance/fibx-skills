@@ -77,4 +77,5 @@ npx fibx@latest balance --chain monad
 
 - Run this BEFORE `send` or `trade` to verify sufficient funds.
 - Run this BEFORE `aave supply` to confirm available assets.
+- Use `portfolio` for a cross-chain overview with USD valuations.
 - Use `config` to set a custom RPC if you encounter rate limit errors.

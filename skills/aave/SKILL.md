@@ -112,4 +112,5 @@ npx fibx@latest aave repay max ETH
 
 - Use `trade` to swap tokens before supplying (e.g. swap ETH → USDC, then supply USDC).
 - Use `balance` to verify available assets before any Aave operation.
+- Use `portfolio` to see Aave positions alongside all token holdings with USD values.
 - Use `config` to set a custom RPC if you encounter rate limit errors.

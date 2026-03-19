@@ -8,6 +8,7 @@
 | ------------------------------------------------------------ | ------------------------------------------------- | -------- |
 | [authenticate-wallet](./skills/authenticate-wallet/SKILL.md) | Email OTP login, private key import, session mgmt | Auth     |
 | [balance](./skills/balance/SKILL.md)                         | Check native and ERC-20 token balances            | Wallet   |
+| [portfolio](./skills/portfolio/SKILL.md)                     | Cross-chain portfolio with USD values             | Wallet   |
 | [send](./skills/send/SKILL.md)                               | Send native or ERC-20 tokens to an address        | Tx       |
 | [trade](./skills/trade/SKILL.md)                             | Swap tokens via Fibrous aggregation               | Tx       |
 | [aave](./skills/aave/SKILL.md)                               | Aave V3: supply, borrow, repay, withdraw (Base)   | DeFi     |
@@ -51,6 +52,8 @@ git clone https://github.com/Fibrous-Finance/fibx-skills.git .skills/fibx-skills
 | "Import my private key"           | `authenticate-wallet` |
 | "Log me out"                      | `authenticate-wallet` |
 | "Check my balance"                | `balance`             |
+| "Show me my portfolio"            | `portfolio`           |
+| "What's my net worth?"            | `portfolio`           |
 | "Send 10 USDC to 0x123..."        | `send`                |
 | "Swap 0.05 ETH to USDC"           | `trade`               |
 | "Supply 1 ETH to Aave"            | `aave`                |
@@ -61,7 +64,7 @@ git clone https://github.com/Fibrous-Finance/fibx-skills.git .skills/fibx-skills
 ## Typical Workflow
 
 1. **Authenticate** — `authenticate-wallet` (required first)
-2. **Check funds** — `balance`
+2. **Check funds** — `balance` or `portfolio`
 3. **Execute** — `send`, `trade`, or `aave`
 4. **Verify** — `tx-status`
 

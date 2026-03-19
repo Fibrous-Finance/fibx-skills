@@ -112,3 +112,4 @@ npx fibx@latest auth logout
 
 - Use `status` to verify your session is active before any operation.
 - Run `balance` after authentication to see available funds.
+- Run `portfolio` after authentication to see a full cross-chain overview with USD values.

@@ -95,5 +95,6 @@ npx fibx@latest tx-status <hash> --chain monad
 ## Related Skills
 
 - Run `balance` BEFORE sending to verify sufficient funds.
+- Run `portfolio` to see your full holdings with USD values across all chains.
 - Run `tx-status` AFTER sending to confirm the transaction succeeded.
 - Use `config` to set a custom RPC if you encounter rate limit errors.

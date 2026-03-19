@@ -115,6 +115,7 @@ npx fibx@latest tx-status <hash> --chain monad
 ## Related Skills
 
 - Run `balance` BEFORE trading to verify sufficient source token balance.
+- Run `portfolio` to see all holdings with USD values before deciding what to trade.
 - Run `tx-status` AFTER trading to confirm the swap succeeded.
 - Use `config` to set a custom RPC if you encounter rate limit errors.
 - Use `aave` to supply swapped tokens into Aave V3 for yield.
