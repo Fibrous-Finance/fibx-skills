@@ -22,7 +22,7 @@ Manage local configuration for the `fibx` CLI. The primary use case is setting c
 ## Rules
 
 1. **Rate Limits**: If a tool fails with a "Rate limit exceeded" or "429" error, use this skill to check the current RPC and set a new one.
-2. **Persistence**: Settings are stored locally in `~/.config/fibx/config.json` (OS dependent) and persist across sessions.
+2. **Persistence**: Settings are stored locally in an OS-dependent config directory (e.g. `~/.config/fibx/config.json` on Linux, `~/Library/Preferences/fibx-nodejs/config.json` on macOS) and persist across sessions.
 3. **Validation**: The CLI validates URL format but not connectivity. Ensure the RPC URL is valid before setting.
 
 ## Commands
@@ -73,3 +73,8 @@ npx fibx@latest config set-rpc base https://mainnet.base.org
 | ------------------- | ---------------------------------------------- |
 | `Unsupported chain` | Check spelling of chain name.                  |
 | `Invalid URL`       | Ensure URL starts with `http://` or `https://` |
+
+## Related Skills
+
+- All other skills may trigger rate limit errors that this skill resolves.
+- Use `get-rpc` to verify the current RPC before troubleshooting connectivity issues.

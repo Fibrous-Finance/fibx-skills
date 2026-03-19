@@ -91,3 +91,9 @@ npx fibx@latest tx-status <hash> --chain monad
 | `Invalid address`    | Validate recipient is a valid `0x` address.      |
 | `Not authenticated`  | Run `authenticate-wallet` skill first.           |
 | `Rate limit / 429`   | Use `config` skill to set a custom RPC.          |
+
+## Related Skills
+
+- Run `balance` BEFORE sending to verify sufficient funds.
+- Run `tx-status` AFTER sending to confirm the transaction succeeded.
+- Use `config` to set a custom RPC if you encounter rate limit errors.

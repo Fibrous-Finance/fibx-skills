@@ -26,7 +26,7 @@ Manage the authentication session for the `fibx` CLI. Supports two methods: emai
 ## Rules
 
 1. For email login, NEVER ask the user for a private key.
-2. For private key import, ALWAYS warn the user first: _"Your private key will be stored locally in an encrypted session file. Shall I proceed?"_
+2. For private key import, ALWAYS warn the user first: _"Your private key will be stored locally in a plaintext session file. Make sure your machine is secure. Shall I proceed?"_
 3. You MUST complete `auth login` before `auth verify`. They are sequential steps.
 4. After successful `auth verify` or `auth import`, ALWAYS run `npx fibx@latest status` to confirm the session is active.
 5. NEVER store or log private keys, OTP codes, or session tokens in conversation history.
@@ -68,6 +68,12 @@ npx fibx@latest auth logout
 | `email`   | string | User's email address                 | Yes (email OTP)   |
 | `code`    | string | One-time password received via email | Yes (verify step) |
 
+## Session Details
+
+- **Privy sessions**: JWT-based, 7-day expiry. After expiry, the user must re-authenticate via `auth login`.
+- **Private key sessions**: No expiry. Session persists until `auth logout`.
+- **Storage**: Sessions are stored as plaintext JSON in an OS-dependent config directory (e.g. `~/.config/fibx/session.json` on Linux, `~/Library/Preferences/fibx-nodejs/session.json` on macOS).
+
 ## Examples
 
 **User:** "Log me in with user@example.com"
@@ -95,9 +101,14 @@ npx fibx@latest auth logout
 
 ## Error Handling
 
-| Error               | Action                                                |
-| ------------------- | ----------------------------------------------------- |
-| `Invalid code`      | Ask the user to check their email and retry `verify`. |
-| `Rate limit`        | Wait 60 seconds before retrying.                      |
-| `Session expired`   | Restart from `auth login`.                            |
-| `Not authenticated` | Run the full login flow before other skills.          |
+| Error               | Action                                                 |
+| ------------------- | ------------------------------------------------------ |
+| `Invalid code`      | Ask the user to check their email and retry `verify`.  |
+| `Rate limit`        | Wait 60 seconds before retrying.                       |
+| `Session expired`   | Privy JWT expired (7 days). Restart from `auth login`. |
+| `Not authenticated` | Run the full login flow before other skills.           |
+
+## Related Skills
+
+- Use `status` to verify your session is active before any operation.
+- Run `balance` after authentication to see available funds.

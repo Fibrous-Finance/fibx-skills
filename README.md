@@ -65,6 +65,13 @@ git clone https://github.com/Fibrous-Finance/fibx-skills.git .skills/fibx-skills
 3. **Execute** — `send`, `trade`, or `aave`
 4. **Verify** — `tx-status`
 
+## Skill Format
+
+Each skill is a `SKILL.md` file with:
+
+- **YAML frontmatter**: `name`, `description`, `license`, `compatibility`, `metadata` (version, author, category), and `allowed-tools` (whitelisted CLI commands)
+- **Sections**: Prerequisites, Rules, Commands, Parameters, Examples, Error Handling, and Related Skills
+
 ## License
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)

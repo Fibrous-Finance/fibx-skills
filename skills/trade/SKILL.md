@@ -92,12 +92,12 @@ npx fibx@latest trade 1 ETH WETH --chain base
 npx fibx@latest tx-status <hash>
 ```
 
-**User:** "Unwrap 0.5 wMON on Monad"
+**User:** "Unwrap 0.5 WMON on Monad"
 
 ```bash
 npx fibx@latest status
 npx fibx@latest balance --chain monad
-npx fibx@latest trade 0.5 wMON MON --chain monad
+npx fibx@latest trade 0.5 WMON MON --chain monad
 npx fibx@latest tx-status <hash> --chain monad
 ```
 
@@ -111,3 +111,10 @@ npx fibx@latest tx-status <hash> --chain monad
 | `Simulation failed`    | Route is invalid or would revert. Do not retry blindly.       |
 | `Not authenticated`    | Run `authenticate-wallet` skill first.                        |
 | `Rate limit / 429`     | Use `config` skill to set a custom RPC.                       |
+
+## Related Skills
+
+- Run `balance` BEFORE trading to verify sufficient source token balance.
+- Run `tx-status` AFTER trading to confirm the swap succeeded.
+- Use `config` to set a custom RPC if you encounter rate limit errors.
+- Use `aave` to supply swapped tokens into Aave V3 for yield.
