@@ -4,7 +4,7 @@ description: Show a consolidated cross-chain portfolio overview with USD valuati
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.5.0
+    version: 0.6.0
     author: ahmetenesdur
     category: wallet-data
 allowed-tools:

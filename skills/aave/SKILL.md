@@ -1,10 +1,10 @@
 ---
 name: aave
-description: Manage Aave V3 DeFi positions on Base — supply, borrow, repay, withdraw, view markets, and check account health. Includes liquidation safety checks.
+description: Manage Aave V3 DeFi positions on Base — supply, borrow, repay, withdraw, view markets, and check account health. Supports --simulate for gas estimation. Includes liquidation safety checks.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.5.0
+    version: 0.6.0
     author: ahmetenesdur
     category: defi-management
 allowed-tools:

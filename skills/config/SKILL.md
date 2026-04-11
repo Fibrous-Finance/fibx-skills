@@ -1,10 +1,10 @@
 ---
 name: config
-description: View and modify fibx CLI configuration, such as setting custom RPC URLs to avoid rate limits.
+description: View and modify fibx CLI configuration, such as setting custom RPC URLs to avoid rate limits. Changes are hot-reloaded automatically — no restart needed.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.5.0
+    version: 0.6.0
     author: ahmetenesdur
     category: utility
 allowed-tools:
@@ -22,8 +22,9 @@ Manage local configuration for the `fibx` CLI. The primary use case is setting c
 ## Rules
 
 1. **Rate Limits**: If a tool fails with a "Rate limit exceeded" or "429" error, use this skill to check the current RPC and set a new one.
-2. **Persistence**: Settings are stored locally in an OS-dependent config directory (e.g. `~/.config/fibx/config.json` on Linux, `~/Library/Preferences/fibx-nodejs/config.json` on macOS) and persist across sessions.
-3. **Validation**: The CLI validates URL format but not connectivity. Ensure the RPC URL is valid before setting.
+2. **Hot-Reload**: Config changes take effect immediately — no need to restart the CLI or MCP server. The config file is monitored via mtime-based hot-reload.
+3. **Persistence**: Settings are stored locally in an OS-dependent config directory (e.g. `~/.config/fibx-nodejs/config.json` on Linux, `~/Library/Preferences/fibx-nodejs/config.json` on macOS) and persist across sessions.
+4. **Validation**: The CLI validates URL format but not connectivity. Ensure the RPC URL is valid before setting.
 
 ## Commands
 

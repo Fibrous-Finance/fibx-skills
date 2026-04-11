@@ -1,10 +1,10 @@
 ---
 name: send
-description: Send native tokens (ETH, cBTC, HYPE, MON) or ERC-20 tokens to an address on Base, Citrea, HyperEVM, or Monad. Simulates before sending.
+description: Send native tokens (ETH, cBTC, HYPE, MON) or ERC-20 tokens to an address on Base, Citrea, HyperEVM, or Monad. Simulates before sending. Supports --simulate for gas-only estimation.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.5.0
+    version: 0.6.0
     author: ahmetenesdur
     category: transaction
 allowed-tools:

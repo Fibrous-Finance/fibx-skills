@@ -1,10 +1,10 @@
 ---
 name: trade
-description: Swap tokens using Fibrous aggregation on Base, Citrea, HyperEVM, or Monad. Finds optimal route, simulates before execution.
+description: Swap tokens using Fibrous aggregation on Base, Citrea, HyperEVM, or Monad. Finds optimal route, simulates before execution. Supports --simulate for gas-only estimation without sending.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.5.0
+    version: 0.6.0
     author: ahmetenesdur
     category: transaction
 allowed-tools:

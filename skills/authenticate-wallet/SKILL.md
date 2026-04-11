@@ -1,10 +1,10 @@
 ---
 name: authenticate-wallet
-description: Authenticate the fibx CLI wallet via email OTP (Privy) or private key import. Required before any wallet operation (balance, send, trade, aave).
+description: Authenticate the fibx CLI wallet via email OTP (Privy) or private key import. Required before any wallet operation (balance, send, trade, aave). Private keys are encrypted at rest with AES-256-GCM.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.5.0
+    version: 0.6.0
     author: ahmetenesdur
     category: auth
 allowed-tools:
@@ -26,7 +26,7 @@ Manage the authentication session for the `fibx` CLI. Supports two methods: emai
 ## Rules
 
 1. For email login, NEVER ask the user for a private key.
-2. For private key import, ALWAYS warn the user first: _"Your private key will be stored locally in a plaintext session file. Make sure your machine is secure. Shall I proceed?"_
+2. For private key import, warn the user: _"Your private key will be encrypted with AES-256-GCM and stored locally. The encryption key is auto-generated per machine. Shall I proceed?"_
 3. You MUST complete `auth login` before `auth verify`. They are sequential steps.
 4. After successful `auth verify` or `auth import`, ALWAYS run `npx fibx@latest status` to confirm the session is active.
 5. NEVER store or log private keys, OTP codes, or session tokens in conversation history.
@@ -72,7 +72,9 @@ npx fibx@latest auth logout
 
 - **Privy sessions**: JWT-based, 7-day expiry. After expiry, the user must re-authenticate via `auth login`.
 - **Private key sessions**: No expiry. Session persists until `auth logout`.
-- **Storage**: Sessions are stored as plaintext JSON in an OS-dependent config directory (e.g. `~/.config/fibx/session.json` on Linux, `~/Library/Preferences/fibx-nodejs/session.json` on macOS).
+- **Storage**: Sessions are stored in an OS-dependent config directory (e.g. `~/.config/fibx-nodejs/session.json` on Linux, `~/Library/Preferences/fibx-nodejs/session.json` on macOS).
+- **Encryption**: Private keys are encrypted at rest using AES-256-GCM. The encryption key is auto-generated per machine in the OS config directory (e.g. `~/.config/fibx-nodejs/encryption-key` on Linux). Legacy plaintext keys are auto-migrated on first load.
+- **CI/Docker**: Set `FIBX_SESSION_SECRET` environment variable (64-char hex) to use a custom encryption key instead of the auto-generated one.
 
 ## Examples
 
