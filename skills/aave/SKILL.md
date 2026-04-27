@@ -4,7 +4,7 @@ description: Manage Aave V3 DeFi positions on Base — supply, borrow, repay, wi
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.6.0
+    version: 0.7.0
     author: ahmetenesdur
     category: defi-management
 allowed-tools:

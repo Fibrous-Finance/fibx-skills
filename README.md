@@ -4,16 +4,17 @@
 
 ## Available Skills
 
-| Skill                                                        | Description                                                               | Category |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------- | -------- |
-| [authenticate-wallet](./skills/authenticate-wallet/SKILL.md) | Email OTP login, private key import (AES-256-GCM encrypted), session mgmt | Auth     |
-| [balance](./skills/balance/SKILL.md)                         | Check native and ERC-20 token balances                                    | Wallet   |
-| [portfolio](./skills/portfolio/SKILL.md)                     | Cross-chain portfolio with USD values and DeFi positions                  | Wallet   |
-| [send](./skills/send/SKILL.md)                               | Send native or ERC-20 tokens (supports `--simulate`)                      | Tx       |
-| [trade](./skills/trade/SKILL.md)                             | Swap tokens via Fibrous aggregation (supports `--simulate`)               | Tx       |
-| [aave](./skills/aave/SKILL.md)                               | Aave V3: status, markets, supply, borrow, repay, withdraw (`--simulate`)  | DeFi     |
-| [tx-status](./skills/tx-status/SKILL.md)                     | Check transaction status and explorer link                                | Utility  |
-| [config](./skills/config/SKILL.md)                           | Set custom RPC URLs (hot-reloaded, no restart needed)                     | Utility  |
+| Skill                                                        | Description                                                               | Category  |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------- | --------- |
+| [quote](./skills/quote/SKILL.md)                             | Get swap price quotes without authentication (no wallet needed)           | Read-Only |
+| [authenticate-wallet](./skills/authenticate-wallet/SKILL.md) | Email OTP login, private key import (AES-256-GCM encrypted), session mgmt | Auth      |
+| [balance](./skills/balance/SKILL.md)                         | Check native and ERC-20 token balances                                    | Wallet    |
+| [portfolio](./skills/portfolio/SKILL.md)                     | Cross-chain portfolio with USD values and DeFi positions                  | Wallet    |
+| [send](./skills/send/SKILL.md)                               | Send native or ERC-20 tokens (supports `--simulate`)                      | Tx        |
+| [trade](./skills/trade/SKILL.md)                             | Swap tokens via Fibrous aggregation (supports `--simulate`)               | Tx        |
+| [aave](./skills/aave/SKILL.md)                               | Aave V3: status, markets, supply, borrow, repay, withdraw (`--simulate`)  | DeFi      |
+| [tx-status](./skills/tx-status/SKILL.md)                     | Check transaction status and explorer link                                | Utility   |
+| [config](./skills/config/SKILL.md)                           | Set custom RPC URLs (hot-reloaded, no restart needed)                     | Utility   |
 
 ## Installation
 
@@ -48,6 +49,9 @@ git clone https://github.com/Fibrous-Finance/fibx-skills.git .skills/fibx-skills
 
 | User Prompt                         | Skill Triggered       |
 | ----------------------------------- | --------------------- |
+| "How much USDC for 0.1 ETH?"        | `quote`               |
+| "Check ETH price"                   | `quote`               |
+| "What's the swap rate?"             | `quote`               |
 | "Log me in with user@example.com"   | `authenticate-wallet` |
 | "Import my private key"             | `authenticate-wallet` |
 | "Log me out"                        | `authenticate-wallet` |
@@ -66,11 +70,12 @@ git clone https://github.com/Fibrous-Finance/fibx-skills.git .skills/fibx-skills
 
 ## Typical Workflow
 
-1. **Authenticate** — `authenticate-wallet` (required first)
-2. **Check funds** — `balance` or `portfolio`
-3. **Simulate** — `send --simulate` or `trade --simulate` (optional)
-4. **Execute** — `send`, `trade`, or `aave`
-5. **Verify** — `tx-status`
+1. **Explore prices** — `quote` (no auth needed)
+2. **Authenticate** — `authenticate-wallet` (required for transactions)
+3. **Check funds** — `balance` or `portfolio`
+4. **Simulate** — `send --simulate` or `trade --simulate` (optional)
+5. **Execute** — `send`, `trade`, or `aave`
+6. **Verify** — `tx-status`
 
 ## Skill Format
 

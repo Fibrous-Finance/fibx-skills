@@ -4,11 +4,12 @@ description: Swap tokens using Fibrous aggregation on Base, Citrea, HyperEVM, or
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
-    version: 0.6.0
+    version: 0.7.0
     author: ahmetenesdur
     category: transaction
 allowed-tools:
     - Bash(npx fibx@latest trade *)
+    - Bash(npx fibx@latest quote *)
     - Bash(npx fibx@latest status)
     - Bash(npx fibx@latest balance *)
     - Bash(npx fibx@latest balance)
@@ -115,6 +116,7 @@ npx fibx@latest tx-status <hash> --chain monad
 
 ## Related Skills
 
+- Run `quote` BEFORE trading to check the expected price and exchange rate.
 - Run `balance` BEFORE trading to verify sufficient source token balance.
 - Run `portfolio` to see all holdings with USD values before deciding what to trade.
 - Run `tx-status` AFTER trading to confirm the swap succeeded.
