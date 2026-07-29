@@ -8,6 +8,7 @@
 | ------------------------------------------------------------ | ------------------------------------------------------------------------- | --------- |
 | [quote](./skills/quote/SKILL.md)                             | Get swap price quotes without authentication (no wallet needed)           | Read-Only |
 | [authenticate-wallet](./skills/authenticate-wallet/SKILL.md) | Email OTP login, private key import (AES-256-GCM encrypted), session mgmt | Auth      |
+| [wallet-info](./skills/wallet-info/SKILL.md)                 | Show active wallet address, wallet ID, and session type                   | Wallet    |
 | [balance](./skills/balance/SKILL.md)                         | Check native and ERC-20 token balances                                    | Wallet    |
 | [portfolio](./skills/portfolio/SKILL.md)                     | Cross-chain portfolio with USD values and DeFi positions                  | Wallet    |
 | [send](./skills/send/SKILL.md)                               | Send native or ERC-20 tokens (supports `--simulate`)                      | Tx        |
@@ -55,6 +56,8 @@ git clone https://github.com/Fibrous-Finance/fibx-skills.git .skills/fibx-skills
 | "Log me in with user@example.com"   | `authenticate-wallet` |
 | "Import my private key"             | `authenticate-wallet` |
 | "Log me out"                        | `authenticate-wallet` |
+| "What's my wallet address?"         | `wallet-info`         |
+| "Which wallet am I using?"          | `wallet-info`         |
 | "Check my balance"                  | `balance`             |
 | "Show me my portfolio"              | `portfolio`           |
 | "What's my net worth?"              | `portfolio`           |

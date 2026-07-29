@@ -64,7 +64,8 @@ npx fibx@latest tx-status 0xabc...def --chain monad
 	"gasUsed": "21000",
 	"from": "0x...",
 	"to": "0x...",
-	"explorerLink": "https://basescan.org/tx/0x...",
+	"txHash": "0x...",
+	"explorer": "https://basescan.org/tx/0x...",
 	"chain": "base"
 }
 ```
