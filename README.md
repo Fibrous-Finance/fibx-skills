@@ -87,6 +87,32 @@ Each skill is a `SKILL.md` file with:
 - **YAML frontmatter**: `name`, `description`, `license`, `compatibility`, `metadata` (version, author, category), and `allowed-tools` (whitelisted CLI commands)
 - **Sections**: Prerequisites, Rules, Commands, Parameters, Examples, Error Handling, and Related Skills
 
+`allowed-tools` is the safety boundary: a skill can only invoke the exact
+`npx fibx@latest ...` commands it declares, so an agent cannot be talked into
+running something the skill never advertised.
+
+## Skills or MCP?
+
+Both work; they solve different halves of the problem.
+
+- **These skills** teach an agent _how to think_ about FibX — which command to
+  reach for, what to confirm, how to read an error. They shell out to
+  `npx fibx@latest` and need nothing installed.
+- **The [MCP server](https://github.com/ahmetenesdur/fibx#mcp-server)** gives an
+  agent _typed tools to act with_ — 11 tools with schemas, structured errors,
+  and destructive-action annotations that make editors prompt for confirmation.
+
+Use skills for prompt-driven agents (Claude Code, Cursor). Use MCP when the
+client supports it. Using both together is fine — the skills' guidance applies
+equally to the MCP tools.
+
+## Related
+
+- [fibx](https://github.com/ahmetenesdur/fibx) — the CLI and MCP server these skills drive
+- [fibx-server](https://github.com/ahmetenesdur/fibx-server) — Privy wallet backend
+- [fibx-telegram-bot](https://github.com/ahmetenesdur/fibx-telegram-bot) — Telegram interface
+- [Fibrous Finance](https://fibrous.finance) — DEX aggregator powering swaps
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)

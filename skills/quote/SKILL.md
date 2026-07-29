@@ -93,12 +93,12 @@ npx fibx@latest quote 1 ETH WETH
 
 ## Error Handling
 
-| Error                | Action                                                       |
-| -------------------- | ------------------------------------------------------------ |
-| `Token not found`    | The symbol is not supported on the specified chain.          |
-| `No route found`     | Liquidity may be too low or pair doesn't exist on the chain. |
-| `Invalid amount`     | Amount must be a positive number.                            |
-| `Rate limit / 429`   | Use `config` skill to set a custom RPC.                      |
+| Error              | Action                                                       |
+| ------------------ | ------------------------------------------------------------ |
+| `Token not found`  | The symbol is not supported on the specified chain.          |
+| `No route found`   | Liquidity may be too low or pair doesn't exist on the chain. |
+| `Invalid amount`   | Amount must be a positive number.                            |
+| `Rate limit / 429` | Use `config` skill to set a custom RPC.                      |
 
 ## Related Skills
 

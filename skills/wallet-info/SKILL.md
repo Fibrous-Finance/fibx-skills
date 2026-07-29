@@ -88,11 +88,11 @@ npx fibx@latest wallets
 
 ## Error Handling
 
-| Error                | Action                                                    |
-| -------------------- | --------------------------------------------------------- |
-| `Not authenticated`  | Run `authenticate-wallet` skill first.                    |
-| `No active session`  | `wallets` reports this instead of failing — offer to log in. |
-| `Session expired`    | Run `authenticate-wallet` skill to re-authenticate.       |
+| Error               | Action                                                       |
+| ------------------- | ------------------------------------------------------------ |
+| `Not authenticated` | Run `authenticate-wallet` skill first.                       |
+| `No active session` | `wallets` reports this instead of failing — offer to log in. |
+| `Session expired`   | Run `authenticate-wallet` skill to re-authenticate.          |
 
 ## Related Skills
 
