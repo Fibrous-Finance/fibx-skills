@@ -1,6 +1,6 @@
 ---
 name: aave
-description: Manage Aave V3 DeFi positions on Base — supply, borrow, repay, withdraw, view markets, and check account health. Supports --simulate for gas estimation. Includes liquidation safety checks.
+description: Manage Aave V3 DeFi positions on Base — supply, borrow, repay, withdraw, view markets, and check account health. Supports a no-broadcast --simulate request preview. Includes liquidation safety checks.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
@@ -58,7 +58,7 @@ npx fibx@latest aave <action> [amount] [token] [--simulate] [--json]
 | `action`   | string | `status`, `markets`, `supply`, `borrow`, `repay`, or `withdraw` | Yes                             |
 | `amount`   | string | Amount or `max` (for full repay/withdraw)                       | Yes (except `status`/`markets`) |
 | `token`    | string | Token symbol (`USDC`, `ETH`, `DAI`, etc.)                       | Yes (except `status`/`markets`) |
-| `simulate` | flag   | Estimate gas without executing the transaction                  | No                              |
+| `simulate` | flag   | Preview the requested action without executing it               | No                              |
 | `json`     | flag   | Output as JSON                                                  | No                              |
 
 ## Dust Handling
@@ -93,11 +93,15 @@ npx fibx@latest balance
 npx fibx@latest aave supply 1 ETH
 ```
 
-**User:** "How much gas would supplying 1 ETH cost?"
+**User:** "Preview supplying 1 ETH without executing it"
 
 ```bash
 npx fibx@latest aave supply 1 ETH --simulate
 ```
+
+This preview validates the amount, resolves the requested token, and shows the
+action. It does not perform an on-chain gas estimate or prove that the action
+will succeed.
 
 **User:** "Borrow 100 USDC"
 

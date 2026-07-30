@@ -1,6 +1,6 @@
 ---
 name: send
-description: Send native tokens (ETH, cBTC, HYPE, MON) or ERC-20 tokens to an address on Base, Citrea, HyperEVM, or Monad. Simulates before sending. Supports --simulate for gas-only estimation.
+description: Send native tokens (ETH, cBTC, HYPE, MON) or ERC-20 tokens to an address on Base, Citrea, HyperEVM, or Monad. Preflights writes and supports a no-broadcast --simulate preview.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
@@ -17,7 +17,9 @@ allowed-tools:
 
 # Send Transaction
 
-Transfer native tokens or ERC-20 tokens to a destination address. The CLI automatically simulates the transaction before execution — if simulation fails, no funds are sent.
+Transfer native tokens or ERC-20 tokens to a destination address. The CLI
+preflights the transfer before broadcasting it; if that check fails, no transfer
+is sent.
 
 ## Prerequisites
 
@@ -57,10 +59,13 @@ If `token` is omitted, the chain's native token is used.
 | `recipient` | string | Destination address (`0x...`)            | Yes      |
 | `token`     | string | Token symbol (e.g. `USDC`, `ETH`, `MON`) | No       |
 | `chain`     | string | `base`, `citrea`, `hyperevm`, or `monad` | No       |
-| `simulate`  | flag   | Estimate gas without executing           | No       |
+| `simulate`  | flag   | Preview without broadcasting             | No       |
 | `json`      | flag   | Output as JSON                           | No       |
 
 Default token: chain native. Default chain: `base`.
+
+Native-token previews include estimated gas. ERC-20 previews validate the
+contract call but do not currently return a gas estimate.
 
 ## Examples
 

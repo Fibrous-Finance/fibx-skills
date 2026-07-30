@@ -65,10 +65,10 @@ Default chain: `base`. Default slippage: `0.5`.
 npx fibx@latest quote 0.1 ETH USDC
 ```
 
-**User:** "Check ETH price in DAI on Monad"
+**User:** "Check MON price in USDC on Monad"
 
 ```bash
-npx fibx@latest quote 1 ETH DAI --chain monad
+npx fibx@latest quote 1 MON USDC --chain monad
 ```
 
 **User:** "Compare rates for 100 USDC to WETH"
@@ -90,6 +90,9 @@ npx fibx@latest quote 1 ETH WETH
 ```
 
 > Output: `1 ETH = 1 WETH` — Wrap (direct contract call)
+
+The conversion amount is 1:1, but executing the wrap or unwrap still requires
+native gas.
 
 ## Error Handling
 

@@ -1,6 +1,6 @@
 ---
 name: trade
-description: Swap tokens using Fibrous aggregation on Base, Citrea, HyperEVM, or Monad. Finds optimal route, simulates before execution. Supports --simulate for gas-only estimation without sending.
+description: Swap tokens using Fibrous aggregation on Base, Citrea, HyperEVM, or Monad. Finds an optimal route and supports a no-broadcast --simulate preview.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
@@ -18,7 +18,9 @@ allowed-tools:
 
 # Trade / Swap Tokens
 
-Exchange one token for another via Fibrous aggregation. The CLI finds the best route, handles token approvals, simulates the swap, and executes.
+Exchange one token for another via Fibrous aggregation. The CLI finds the best
+route, handles token approvals, estimates the swap gas when possible, and
+executes.
 
 > **Note:** Automatically detects and executes **Wrap** (Native -> Wrapped) and **Unwrap** (Wrapped -> Native) operations directly via contract calls, bypassing aggregation to save gas.
 
@@ -52,18 +54,22 @@ npx fibx@latest trade <amount> <from_token> <to_token> [--chain <chain>] [--slip
 
 ## Parameters
 
-| Parameter     | Type   | Description                              | Required |
-| ------------- | ------ | ---------------------------------------- | -------- |
-| `amount`      | number | Amount of source token to swap           | Yes      |
-| `from_token`  | string | Source token symbol (e.g. `ETH`, `USDC`) | Yes      |
-| `to_token`    | string | Target token symbol (e.g. `USDC`, `DAI`) | Yes      |
-| `chain`       | string | `base`, `citrea`, `hyperevm`, or `monad` | No       |
-| `slippage`    | number | Slippage tolerance in % (e.g. `1.0`)     | No       |
-| `approve-max` | flag   | Use infinite approval instead of exact   | No       |
-| `simulate`    | flag   | Estimate gas without executing           | No       |
-| `json`        | flag   | Output as JSON                           | No       |
+| Parameter     | Type   | Description                               | Required |
+| ------------- | ------ | ----------------------------------------- | -------- |
+| `amount`      | number | Amount of source token to swap            | Yes      |
+| `from_token`  | string | Source token symbol (e.g. `ETH`, `USDC`)  | Yes      |
+| `to_token`    | string | Target token symbol (e.g. `USDC`, `DAI`)  | Yes      |
+| `chain`       | string | `base`, `citrea`, `hyperevm`, or `monad`  | No       |
+| `slippage`    | number | Slippage tolerance in % (e.g. `1.0`)      | No       |
+| `approve-max` | flag   | Use infinite approval instead of exact    | No       |
+| `simulate`    | flag   | Preview without broadcasting transactions | No       |
+| `json`        | flag   | Output as JSON                            | No       |
 
 Default chain: `base`. Default slippage: `0.5`.
+
+With `--simulate`, no approval or swap is broadcast. If an ERC-20 approval is
+needed, the preview reports `requiresApproval: true`; a swap gas estimate is
+only available when the current allowance is already sufficient.
 
 ## Examples
 
