@@ -98,7 +98,7 @@ Both work; they solve different halves of the problem.
 - **These skills** teach an agent _how to think_ about FibX — which command to
   reach for, what to confirm, how to read an error. They shell out to
   `npx fibx@latest` and need nothing installed.
-- **The [MCP server](https://github.com/ahmetenesdur/fibx#mcp-server)** gives an
+- **The [MCP server](https://github.com/Fibrous-Finance/fibx#mcp-server)** gives an
   agent _typed tools to act with_ — 11 tools with schemas, structured errors,
   and destructive-action annotations that make editors prompt for confirmation.
 
@@ -108,9 +108,9 @@ equally to the MCP tools.
 
 ## Related
 
-- [fibx](https://github.com/ahmetenesdur/fibx) — the CLI and MCP server these skills drive
-- [fibx-server](https://github.com/ahmetenesdur/fibx-server) — Privy wallet backend
-- [fibx-telegram-bot](https://github.com/ahmetenesdur/fibx-telegram-bot) — Telegram interface
+- [fibx](https://github.com/Fibrous-Finance/fibx) — the CLI and MCP server these skills drive
+- [fibx-server](https://github.com/Fibrous-Finance/fibx-server) — Privy wallet backend
+- [fibx-telegram-bot](https://github.com/Fibrous-Finance/fibx-telegram-bot) — Telegram interface
 - [Fibrous Finance](https://fibrous.finance) — DEX aggregator powering swaps
 
 ## License
