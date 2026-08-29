@@ -1,6 +1,6 @@
 # fibx Skills
 
-[Agent Skills](https://agentskills.io) for the [`fibx`](https://www.npmjs.com/package/fibx) CLI. These skills enable AI agents to securely authenticate, check balances, send funds, trade tokens, and manage Aave V3 positions on **Base, Citrea, HyperEVM, and Monad**.
+[Agent Skills](https://agentskills.io) for the [`fibx`](https://www.npmjs.com/package/fibx) CLI. These skills enable AI agents to securely authenticate, check balances, send funds, trade tokens, and manage Aave V3 positions on **Base, HyperEVM, and Monad**.
 
 ## Available Skills
 
@@ -42,7 +42,6 @@ git clone https://github.com/Fibrous-Finance/fibx-skills.git .skills/fibx-skills
 | Chain    | Native Token | Aave V3 |
 | -------- | ------------ | ------- |
 | Base     | ETH          | Yes     |
-| Citrea   | cBTC         | No      |
 | HyperEVM | HYPE         | No      |
 | Monad    | MON          | No      |
 

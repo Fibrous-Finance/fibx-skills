@@ -15,7 +15,7 @@ allowed-tools:
 
 # Portfolio Overview
 
-Fetch a consolidated view of all token holdings with USD valuations across **all supported chains** (Base, Citrea, HyperEVM, Monad) and DeFi positions (Aave V3 on Base).
+Fetch a consolidated view of all token holdings with USD valuations across **all supported chains** (Base, HyperEVM, Monad) and DeFi positions (Aave V3 on Base).
 
 ## Prerequisites
 

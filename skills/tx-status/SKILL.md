@@ -1,6 +1,6 @@
 ---
 name: tx-status
-description: Check the on-chain status of a transaction and get the block explorer link. Supports Base, Citrea, HyperEVM, and Monad.
+description: Check the on-chain status of a transaction and get the block explorer link. Supports Base, HyperEVM, and Monad.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
@@ -36,7 +36,7 @@ npx fibx@latest tx-status <hash> [--chain <chain>] [--json]
 | Parameter | Type   | Description                              | Required |
 | --------- | ------ | ---------------------------------------- | -------- |
 | `hash`    | string | Transaction hash (`0x...`)               | Yes      |
-| `chain`   | string | `base`, `citrea`, `hyperevm`, or `monad` | No       |
+| `chain`   | string | `base`, `hyperevm`, or `monad` | No       |
 | `json`    | flag   | Output as JSON                           | No       |
 
 Default chain: `base`.

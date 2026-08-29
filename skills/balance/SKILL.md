@@ -1,6 +1,6 @@
 ---
 name: balance
-description: Check wallet balances (native and ERC-20 tokens) on Base, Citrea, HyperEVM, or Monad.
+description: Check wallet balances (native and ERC-20 tokens) on Base, HyperEVM, or Monad.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
@@ -32,7 +32,6 @@ Fetch wallet holdings: native tokens and all ERC-20 tokens with non-zero balance
 | Chain    | Flag               | Native Token |
 | -------- | ------------------ | ------------ |
 | Base     | `--chain base`     | ETH          |
-| Citrea   | `--chain citrea`   | cBTC         |
 | HyperEVM | `--chain hyperevm` | HYPE         |
 | Monad    | `--chain monad`    | MON          |
 
@@ -46,7 +45,7 @@ npx fibx@latest balance [--chain <chain>] [--json]
 
 | Parameter | Type   | Description                              | Required |
 | --------- | ------ | ---------------------------------------- | -------- |
-| `chain`   | string | `base`, `citrea`, `hyperevm`, or `monad` | No       |
+| `chain`   | string | `base`, `hyperevm`, or `monad` | No       |
 | `json`    | flag   | Output as JSON                           | No       |
 
 Default chain: `base`

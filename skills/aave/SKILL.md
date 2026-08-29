@@ -26,7 +26,7 @@ Interact with the Aave V3 lending protocol on **Base only**. View market data, s
 
 ## Rules
 
-1. This skill ONLY works on **Base**. NEVER attempt Aave operations on Citrea, HyperEVM, or Monad. If requested, refuse and explain.
+1. This skill ONLY works on **Base**. NEVER attempt Aave operations on HyperEVM or Monad. If requested, refuse and explain.
 2. BEFORE any action, run `npx fibx@latest balance` to verify enough ETH for gas.
 3. BEFORE `borrow`, you MUST run `npx fibx@latest aave status` to check the Health Factor:
     - Health Factor < **1.5** → WARN the user about liquidation risk.

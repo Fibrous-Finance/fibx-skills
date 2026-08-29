@@ -1,6 +1,6 @@
 ---
 name: trade
-description: Swap tokens using Fibrous aggregation on Base, Citrea, HyperEVM, or Monad. Finds an optimal route and supports a no-broadcast --simulate preview.
+description: Swap tokens using Fibrous aggregation on Base, HyperEVM, or Monad. Finds an optimal route and supports a no-broadcast --simulate preview.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
@@ -42,7 +42,6 @@ executes.
 | Chain    | Flag               | Native Token |
 | -------- | ------------------ | ------------ |
 | Base     | `--chain base`     | ETH          |
-| Citrea   | `--chain citrea`   | cBTC         |
 | HyperEVM | `--chain hyperevm` | HYPE         |
 | Monad    | `--chain monad`    | MON          |
 
@@ -59,7 +58,7 @@ npx fibx@latest trade <amount> <from_token> <to_token> [--chain <chain>] [--slip
 | `amount`      | number | Amount of source token to swap            | Yes      |
 | `from_token`  | string | Source token symbol (e.g. `ETH`, `USDC`)  | Yes      |
 | `to_token`    | string | Target token symbol (e.g. `USDC`, `DAI`)  | Yes      |
-| `chain`       | string | `base`, `citrea`, `hyperevm`, or `monad`  | No       |
+| `chain`       | string | `base`, `hyperevm`, or `monad`  | No       |
 | `slippage`    | number | Slippage tolerance in % (e.g. `1.0`)      | No       |
 | `approve-max` | flag   | Use infinite approval instead of exact    | No       |
 | `simulate`    | flag   | Preview without broadcasting transactions | No       |

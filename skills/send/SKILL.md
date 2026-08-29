@@ -1,6 +1,6 @@
 ---
 name: send
-description: Send native tokens (ETH, cBTC, HYPE, MON) or ERC-20 tokens to an address on Base, Citrea, HyperEVM, or Monad. Preflights writes and supports a no-broadcast --simulate preview.
+description: Send native tokens (ETH, HYPE, MON) or ERC-20 tokens to an address on Base, HyperEVM, or Monad. Preflights writes and supports a no-broadcast --simulate preview.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
@@ -39,7 +39,6 @@ is sent.
 | Chain    | Flag               | Native Token |
 | -------- | ------------------ | ------------ |
 | Base     | `--chain base`     | ETH          |
-| Citrea   | `--chain citrea`   | cBTC         |
 | HyperEVM | `--chain hyperevm` | HYPE         |
 | Monad    | `--chain monad`    | MON          |
 
@@ -58,7 +57,7 @@ If `token` is omitted, the chain's native token is used.
 | `amount`    | number | Amount to send (e.g. `0.1`, `100`)       | Yes      |
 | `recipient` | string | Destination address (`0x...`)            | Yes      |
 | `token`     | string | Token symbol (e.g. `USDC`, `ETH`, `MON`) | No       |
-| `chain`     | string | `base`, `citrea`, `hyperevm`, or `monad` | No       |
+| `chain`     | string | `base`, `hyperevm`, or `monad` | No       |
 | `simulate`  | flag   | Preview without broadcasting             | No       |
 | `json`      | flag   | Output as JSON                           | No       |
 

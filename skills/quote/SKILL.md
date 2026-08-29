@@ -1,6 +1,6 @@
 ---
 name: quote
-description: Get a swap price quote without authentication. Check exchange rates, output amounts, and route info for any token pair on Base, Citrea, HyperEVM, or Monad. No wallet or session required.
+description: Get a swap price quote without authentication. Check exchange rates, output amounts, and route info for any token pair on Base, HyperEVM, or Monad. No wallet or session required.
 license: MIT
 compatibility: Requires Node.js 18+ and npx. Uses `npx fibx@latest`.
 metadata:
@@ -34,7 +34,6 @@ Get a swap price quote for any token pair without authentication. Use this to ch
 | Chain    | Flag               | Native Token |
 | -------- | ------------------ | ------------ |
 | Base     | `--chain base`     | ETH          |
-| Citrea   | `--chain citrea`   | cBTC         |
 | HyperEVM | `--chain hyperevm` | HYPE         |
 | Monad    | `--chain monad`    | MON          |
 
@@ -51,7 +50,7 @@ npx fibx@latest quote <amount> <from_token> <to_token> [--chain <chain>] [--slip
 | `amount`     | number | Amount to quote                          | Yes      |
 | `from_token` | string | Source token symbol (e.g. `ETH`, `USDC`) | Yes      |
 | `to_token`   | string | Target token symbol (e.g. `USDC`, `DAI`) | Yes      |
-| `chain`      | string | `base`, `citrea`, `hyperevm`, or `monad` | No       |
+| `chain`      | string | `base`, `hyperevm`, or `monad` | No       |
 | `slippage`   | number | Slippage tolerance in % (e.g. `1.0`)     | No       |
 | `json`       | flag   | Output as JSON                           | No       |
 

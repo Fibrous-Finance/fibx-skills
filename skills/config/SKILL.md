@@ -49,7 +49,7 @@ npx fibx@latest config list
 
 | Parameter | Type   | Description                              | Required |
 | --------- | ------ | ---------------------------------------- | -------- |
-| `chain`   | string | `base`, `citrea`, `hyperevm`, or `monad` | Yes      |
+| `chain`   | string | `base`, `hyperevm`, or `monad` | Yes      |
 | `url`     | string | The full HTTP(S) RPC endpoint URL        | Yes      |
 
 ## Examples
