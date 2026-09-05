@@ -98,8 +98,10 @@ Both work; they solve different halves of the problem.
   reach for, what to confirm, how to read an error. They shell out to
   `npx fibx@latest` and need nothing installed.
 - **The [MCP server](https://github.com/Fibrous-Finance/fibx#mcp-server)** gives an
-  agent _typed tools to act with_ — 11 tools with schemas, structured errors,
-  and destructive-action annotations that make editors prompt for confirmation.
+  agent _typed tools to act with_ — 19 tools with schemas, structured errors,
+  and destructive-action annotations that make editors prompt for confirmation,
+  plus the FibX app itself as MCP Apps UI in hosts that render it (Claude
+  Desktop).
 
 Use skills for prompt-driven agents (Claude Code, Cursor). Use MCP when the
 client supports it. Using both together is fine — the skills' guidance applies
