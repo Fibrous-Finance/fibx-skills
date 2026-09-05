@@ -7,7 +7,8 @@
 | Skill                                                        | Description                                                               | Category  |
 | ------------------------------------------------------------ | ------------------------------------------------------------------------- | --------- |
 | [quote](./skills/quote/SKILL.md)                             | Get swap price quotes without authentication (no wallet needed)           | Read-Only |
-| [authenticate-wallet](./skills/authenticate-wallet/SKILL.md) | Email OTP login, private key import (AES-256-GCM encrypted), session mgmt | Auth      |
+| [authenticate-wallet](./skills/authenticate-wallet/SKILL.md) | Own wallet over WalletConnect, email OTP (Privy), or private key import   | Auth      |
+| [policy](./skills/policy/SKILL.md)                           | The local signing policy: native caps, chain and destination allowlists   | Auth      |
 | [wallet-info](./skills/wallet-info/SKILL.md)                 | Show active wallet address, wallet ID, and session type                   | Wallet    |
 | [balance](./skills/balance/SKILL.md)                         | Check native and ERC-20 token balances                                    | Wallet    |
 | [portfolio](./skills/portfolio/SKILL.md)                     | Cross-chain portfolio with USD values and DeFi positions                  | Wallet    |
@@ -52,9 +53,13 @@ git clone https://github.com/Fibrous-Finance/fibx-skills.git .skills/fibx-skills
 | "How much USDC for 0.1 ETH?"        | `quote`               |
 | "Check ETH price"                   | `quote`               |
 | "What's the swap rate?"             | `quote`               |
+| "Which wallet setup should I use?"  | `authenticate-wallet` |
+| "Connect my own wallet"             | `authenticate-wallet` |
 | "Log me in with user@example.com"   | `authenticate-wallet` |
 | "Import my private key"             | `authenticate-wallet` |
 | "Log me out"                        | `authenticate-wallet` |
+| "Cap this wallet at 0.05 ETH"       | `policy`              |
+| "What limits are on my wallet?"     | `policy`              |
 | "What's my wallet address?"         | `wallet-info`         |
 | "Which wallet am I using?"          | `wallet-info`         |
 | "Check my balance"                  | `balance`             |
